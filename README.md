@@ -1,5 +1,6 @@
 **Problem Statement:**
-
+Fitness related calculations are a constant gripe for developers creating fitness-based applications. Maybe Baby's fitness calculations web service takes care of various fitness related calculations for the user. 
+All that is needed is to pass the needed parameters, and FitnessCalc will return the results!
 
 
 **Project Technologies/Techniques**
@@ -21,7 +22,6 @@ JUnit tests to achieve 80%+ code coverage
 **Design**
 * Coming soon.
 * [Screen Design]
-* [Database Design]
 
 **Project Plan**
 * [Project Plan](ProjectPlan.md)
