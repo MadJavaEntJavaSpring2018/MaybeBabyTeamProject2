@@ -1,3 +1,5 @@
 ## Timelog
 
-|  Date | Hours  | Name | Notes |
+|-------|--------|------|-------|\
+|  Date | Hours  | Name | Notes |\
+|       |        |      |       |
