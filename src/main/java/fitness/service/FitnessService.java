@@ -56,11 +56,17 @@ public class FitnessService {
         return Response.status(200).entity(bmr + " " + gender).build();
     }
 
-    //@GET
-    //@Produces("text/plain")
-    //@Produces({MediaType.APPLICATION_JSON})
-    //@Produces("application/json")
-    /*public ???? getAllUser() {
-        return output;
-    }*/
+
+    /**
+     * Calculate calories required per day response.
+     *
+     * @return response
+     */
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("{age}/{height}/{weight}/{activity}")
+   public Response calculateCaloriesRequiredPerDay(){
+        String arrayToJson = "";
+        return Response.status(200).entity(arrayToJson).build();
+   }
 }
