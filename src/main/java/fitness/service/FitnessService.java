@@ -40,7 +40,7 @@ public class FitnessService {
     //@Produces({MediaType.APPLICATION_JSON})
     @Produces("text/plain")
     @Path("/{weight}/{height}/{age}/{gender}")
-    public Response calculateBMR(
+    public Response calculateBMIKg(
             @PathParam("weight") double weight, @PathParam("height") double height,
             @PathParam("age") int age, @PathParam("gender") String gender) {
 
@@ -108,6 +108,44 @@ public class FitnessService {
         {
             return Response.status(200).entity(calories + " " + gender).build();
         }
+    }
+
+    /**
+     *
+     * @param weight    weight in lbs
+     * @param height    height in inches
+     *
+     * @return BMI - Body Mass Index
+     */
+
+    @GET
+    @Produces("text/plain")
+    @Path("/bmilbs/{weight}/{height}")
+    public Response calculateBMIlbs(
+            @PathParam("weight") double weight,
+            @PathParam("height") double height) {
+
+        double bmi = weight / (Math.pow(height, 2) * 703);
+        return Response.status(200).entity(bmi).build();
+    }
+
+    /**
+     *
+     * @param weight    weight in kg
+     * @param height    height in meters
+     *
+     * @return BMI - Body Mass Index
+     */
+
+    @GET
+    @Produces("text/plain")
+    @Path("/bmikg/{weight}/{height}")
+    public Response calculateBMIkg(
+            @PathParam("weight") double weight,
+            @PathParam("height") double height) {
+
+        double bmi = weight / Math.pow(height, 2);
+        return Response.status(200).entity(bmi).build();
     }
 }
 
