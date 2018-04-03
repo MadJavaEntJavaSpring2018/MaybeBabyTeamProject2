@@ -386,32 +386,6 @@
   <component name="SvnConfiguration">
     <configuration />
   </component>
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="2789b8ba-fa23-4d56-b4db-e4405923006f" name="Default" comment="" />
-      <created>1522165581532</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1522165581532</updated>
-<<<<<<< jlaabs-branching-practice
-      <workItem from="1522165587471" duration="236000" />
-=======
-      <workItem from="1522165587471" duration="184000" />
-      <workItem from="1522197344132" duration="3949000" />
-      <workItem from="1522356708479" duration="747000" />
-      <workItem from="1522365104261" duration="4586000" />
-      <workItem from="1522624973864" duration="2734000" />
->>>>>>> master
-    </task>
-    <servers />
-  </component>
-  <component name="TimeTrackingManager">
-<<<<<<< jlaabs-branching-practice
-    <option name="totallyTimeSpent" value="236000" />
-=======
-    <option name="totallyTimeSpent" value="15452000" />
->>>>>>> master
-  </component>
   <component name="ToolWindowManager">
     <frame x="1985" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
