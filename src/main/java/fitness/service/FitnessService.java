@@ -1,12 +1,15 @@
 package fitness.service;
 
 
+import org.json.JSONObject;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.text.DecimalFormat;
 
 /**
  * This is the service class. You can add your calculating methods in here.
@@ -119,14 +122,16 @@ public class FitnessService {
      */
 
     @GET
-    @Produces("text/plain")
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/bmilbs/{weight}/{height}")
     public Response calculateBMIlbs(
             @PathParam("weight") double weight,
             @PathParam("height") double height) {
-
-        double bmi = weight / (Math.pow(height, 2) * 703);
-        return Response.status(200).entity(bmi).build();
+        DecimalFormat df = new DecimalFormat("###.##");
+        double bmi = (weight / Math.pow(height, 2)) * 703;
+        JSONObject json = new JSONObject();
+        json.put("BMI", df.format(bmi));
+        return Response.status(200).entity(json.toString()).build();
     }
 
     /**
@@ -138,14 +143,17 @@ public class FitnessService {
      */
 
     @GET
-    @Produces("text/plain")
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/bmikg/{weight}/{height}")
     public Response calculateBMIkg(
             @PathParam("weight") double weight,
             @PathParam("height") double height) {
 
+        DecimalFormat df = new DecimalFormat("###.##");
         double bmi = weight / Math.pow(height, 2);
-        return Response.status(200).entity(bmi).build();
+        JSONObject json = new JSONObject();
+        json.put("BMI", df.format(bmi));
+        return Response.status(200).entity(json.toString()).build();
     }
 }
 
