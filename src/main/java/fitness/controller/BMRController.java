@@ -20,6 +20,7 @@ import java.io.IOException;
 public class BMRController extends HttpServlet {
     public void doGet (HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
+
         FitnessService fitnessService = new FitnessService();
 
         String format = request.getParameter("format");
@@ -37,6 +38,12 @@ public class BMRController extends HttpServlet {
         }
 
         request.setAttribute("format", format);
+        request.setAttribute("weight",weight);
+        request.setAttribute("height",height);
+        request.setAttribute("age",age);
+        request.setAttribute("gender",gender);
+        request.setAttribute("activity",activity);
+        request.setAttribute("unit",unit);
 
         String url = "/resultBMR.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);

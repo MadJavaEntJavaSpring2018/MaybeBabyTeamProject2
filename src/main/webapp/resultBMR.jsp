@@ -12,6 +12,13 @@
     <h2>BMR Result</h2>
 </head>
 <body>
-    <p>${resultBMR}, ${format}</p>
+    <p>${resultBMR}</p>
+
+    <div>
+        <span>Request URL</span>
+        <code>https://www.AWS.com/fitness/service/bmr/${format}/${weight}/${height}/${age}/${gender}/${activity}</code>
+    </div>
+
+    <p><a href="index.jsp">Back to HomePage</a></p>
 </body>
 </html>

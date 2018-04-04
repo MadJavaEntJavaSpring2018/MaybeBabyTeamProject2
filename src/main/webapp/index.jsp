@@ -1,4 +1,7 @@
 <html>
+<head>
+    <title>Fitness Service</title>
+</head>
 <body>
 <h2>Hello World! MaybeBabyTeamProject</h2>
 <!-- BMR calculation form -->
