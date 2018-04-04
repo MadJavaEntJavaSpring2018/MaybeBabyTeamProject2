@@ -33,23 +33,64 @@ public class FitnessService {
      * <p>
      * Source: (http://www.healthfitonline.com/resources/harris_benedict.php)
      *
+     * This method returns the JSON response.
+     * @author Osamah Shareef
      * @param weight
      * @param height
      * @param age
      * @param gender
-     * @return bmr the Basal Metabolic Rate
+     * @param activity
+     * @return JSON object
      */
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    //@Produces("text/plain")
-    @Path("/bmr/{weight}/{height}/{age}/{gender}/{activity}")
-    //@Path("/bmr/html/{weight}/{height}/{age}/{gender}/{activity}")
-    public Response calculateBMR(
+    @Path("/bmr/json/{weight}/{height}/{age}/{gender}/{activity}")
+    public Response getBMRJson(
             @PathParam("weight") double weight, @PathParam("height") double height,
             @PathParam("age") int age, @PathParam("gender") String gender,
             @PathParam("activity") String activity) {
 
+        JSONObject json = new JSONObject();
+        json.put("BMR", calculateBMR(gender, weight, height, age, activity));
+
+        return Response.status(200).entity(json.toString() + " calories you need each day to maintain you weight.").build();
+    }
+
+    /**
+     *  This method returns the JSON response.
+     * @author Osamah Shareef
+     * @param weight
+     * @param height
+     * @param age
+     * @param gender
+     * @param activity
+     * @return Html String
+     */
+    @GET
+    @Produces({MediaType.TEXT_HTML})
+    @Path("/bmr/html/{weight}/{height}/{age}/{gender}/{activity}")
+    public Response getBMRHtml(
+            @PathParam("weight") double weight, @PathParam("height") double height,
+            @PathParam("age") int age, @PathParam("gender") String gender,
+            @PathParam("activity") String activity) {
+
+        String html = "<p>Your BMR is " + calculateBMR(gender, weight, height, age, activity) + "</p>";
+
+        return Response.status(200).entity(html + " calories you need each day to maintain you weight.").build();
+    }
+
+
+    /**
+     * This method calculates the BMR.
+     * @author Osamah Shareef
+     * @param gender
+     * @param weight
+     * @param height
+     * @param age
+     * @param activity
+     */
+    private double calculateBMR(String gender, double weight, double height, int age, String activity) {
         double bmr = 0.0;
         double calories = 0.0;
         if (gender.equals("female")) {
@@ -69,12 +110,7 @@ public class FitnessService {
         } else if (activity.equals("extra")) {
             calories = bmr * 1.9;
         }
-
-        JSONObject json = new JSONObject();
-        json.put("BMR", calories);
-        //String html = "<p>Your BMR is " + bmr + "</p>";
-
-        return Response.status(200).entity(json.toString() + " calories you need each day to maintain you weight.").build();
+        return calories;
     }
 
 
