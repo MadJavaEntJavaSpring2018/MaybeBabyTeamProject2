@@ -3,6 +3,7 @@ package fitness.service;
 
 import org.json.JSONObject;
 
+import javax.json.Json;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -42,21 +43,38 @@ public class FitnessService {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     //@Produces("text/plain")
-    @Path("/bmr/{weight}/{height}/{age}/{gender}")
-    //@Path("/bmr/html/{weight}/{height}/{age}/{gender}")
+    @Path("/bmr/{weight}/{height}/{age}/{gender}/{activity}")
+    //@Path("/bmr/html/{weight}/{height}/{age}/{gender}/{activity}")
     public Response calculateBMR(
             @PathParam("weight") double weight, @PathParam("height") double height,
-            @PathParam("age") int age, @PathParam("gender") String gender) {
+            @PathParam("age") int age, @PathParam("gender") String gender,
+            @PathParam("activity") String activity) {
 
         double bmr = 0.0;
+        double calories = 0.0;
         if (gender.equals("female")) {
             bmr = 655 + (4.35 * weight) + (4.7 * height) - (4.7 * (double) age);
         } else if (gender.equals("male")) {
             bmr = 66 + (6.23 * weight) + (12.7 * height) - (6.8 * (double) age);
         }
-        //String html = "<p>Yout BMR is " + bmr + "</p>";
 
-        return Response.status(200).entity(bmr + " " + gender).build();
+        if (activity.equals("sedentary")) {
+            calories = bmr * 1.2;
+        } else if (activity.equals("lightly")) {
+            calories = bmr * 1.375;
+        } else if (activity.equals("moderately")) {
+            calories = bmr * 1.55;
+        } else if (activity.equals("very")) {
+            calories = bmr * 1.725;
+        } else if (activity.equals("extra")) {
+            calories = bmr * 1.9;
+        }
+
+        JSONObject json = new JSONObject();
+        json.put("BMR", calories);
+        //String html = "<p>Your BMR is " + bmr + "</p>";
+
+        return Response.status(200).entity(json.toString() + " calories you need each day to maintain you weight.").build();
     }
 
 
