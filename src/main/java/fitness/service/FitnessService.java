@@ -42,7 +42,7 @@ public class FitnessService {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     //@Produces("text/plain")
-    @Path("/{weight}/{height}/{age}/{gender}")
+    @Path("/bmr/{weight}/{height}/{age}/{gender}")
     public Response calculateBMR(
             @PathParam("weight") double weight, @PathParam("height") double height,
             @PathParam("age") int age, @PathParam("gender") String gender) {
@@ -66,7 +66,7 @@ public class FitnessService {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{age}/{height}/{weight}/{activity}")
+    @Path("/ccr/{age}/{height}/{weight}/{activity}")
     public Response calculateCaloriesRequiredPerDay() {
         String arrayToJson = "";
         return Response.status(200).entity(arrayToJson).build();
