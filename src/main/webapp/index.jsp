@@ -18,7 +18,7 @@
                         <label>Format</label>
                         <select name="format" required="required">
                             <option value="json">Json</option>
-                            <option value="xml">Html</option>
+                            <option value="html">Html</option>
                         </select>
                     </div>
 
@@ -62,9 +62,9 @@
                         </select>
                     </div>
 
-                    <div class="span2 offset1">
+                    <div>
                         <label>&nbsp;</label>
-                        <input type="submit" name="submit">Make Request</input>
+                        <input type="submit" name="submit"/>
                     </div>
                 </div>
             </div>
