@@ -118,43 +118,55 @@ public class FitnessService {
         return Response.status(200).entity(arrayToJson).build();
     }
 
-
     /**
      * Calculate calories burned during a run.
-     * <p>
-     * Men use the following formula:
-     * Calories Burned = [(Age x 0.2017) - (Weight x 0.09036) + (Heart Rate x 0.6309) - 55.0969] x Duration / 4.184.
-     * <p>
-     * Women use the following formula:
-     * Calories Burned = [(Age x 0.074) - (Weight x 0.05741) + (Heart Rate x 0.4472) - 20.4022] x Duration / 4.184.
      *
-     * @param age
+     * @param distance
      * @param weight
-     * @param heartRate
-     * @param duration
-     * @param gender
-     * @return calories the calories burned during a run bases on gender
+     * @return Calories - The calories burned during a run
      */
     @GET
-    @Produces("text/plain")
-    @Path("/{age}/{weight}/{heartRate}/{duration}/{gender}")
-    public Response calculateCaloriesBurned(
-            @PathParam("age") int age,
-            @PathParam("weight") int weight,
-            @PathParam("heartRate") int heartRate,
-            @PathParam("duration") int duration,
-            @PathParam("gender") String gender) {
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/ccb/json/{distance}/{weight}")
+    public Response getJSONCaloriesBurned(
+            @PathParam("distance") double distance,
+            @PathParam("weight") int weight) {
 
         double calories = 0.0;
 
-        if (gender.equals("female")) {
-            calories = ((age * 0.074) - (weight * 0.05741) + (heartRate * 0.4472) - 20.4022) * duration / 4.184;
-        } else if (gender.equals("male")) {
-            calories = ((age * 0.2017) - (weight * 0.09036) + (heartRate * 0.6309) - 55.0969) * duration / 4.184;
-        }
+        calories = (int)((distance * 1.60934) * (weight * 0.453592) * 1.036);
+
         {
-            return Response.status(200).entity(calories + " " + gender).build();
+            JSONObject json = new JSONObject();
+            json.put("CaloriesBurned", calories);
+            return Response.status(200).entity(json.toString()).build();
         }
+    }
+
+    /**
+     * Calculate calories burned during a run.
+     *
+     * @param distance
+     * @param weight
+     * @return Calories - The calories burned during a run
+     */
+    @GET
+    @Produces(MediaType.TEXT_HTML)
+    @Path("/ccb/html/{distance}/{weight}")
+    public Response getHTMLCaloriesBurned(
+            @PathParam("distance") double distance,
+            @PathParam("weight") int weight) {
+
+        double calories = 0.0;
+        String response;
+
+        calories = (int)((distance * 1.60934) * (weight * 0.453592) * 1.036);
+
+        {
+            response =  "<html> " + "Calories burned: " + calories + "</html>";
+            return Response.status(200).entity(response).build();
+        }
+
     }
 
     /**
