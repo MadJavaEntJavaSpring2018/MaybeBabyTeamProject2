@@ -60,37 +60,81 @@ public class FitnessService {
 
 
     /**
-     * Calculate calories required per day response.
-     *
-     * @return response
+     * @param weight
+     * @param height
+     * @param age
+     * @param gender
+     * @param activity
+     * @return
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/ccr/{age}/{height}/{weight}/{activity}")
-    public Response calculateCaloriesRequiredPerDay() {
+    @Path("/ccr/{weight}/{height}/{age}/{gender}/{activity}")
+    public Response calculateCaloriesRequiredPerDay(
+            @PathParam("weight") double weight,
+            @PathParam("height") double height,
+            @PathParam("age") int age,
+            @PathParam("gender") String gender,
+            @PathParam("activity") String activity
+    ) {
+        double calorieNeeded = 0.0;
+        double bmr = 0.0;
+        // weight in kg
+        // height in cm
+        age = Math.round(age);
+
+        if (gender.equals("male")) {
+            bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+
+        } else {
+            bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+        }
+
+
+        // Calories needed based on activity type
+        if (activity.equals("sedentary")) {
+            calorieNeeded = bmr * 1.2;
+
+        } else if (activity.equals("light")) {
+            calorieNeeded = bmr * 1.375;
+
+        } else if (activity.equals("moderate")) {
+            calorieNeeded = bmr * 1.55;
+
+        } else if (activity.equals("heavy")) {
+            calorieNeeded = bmr * 1.725;
+
+        } else if (activity.equals("extra")) {
+            calorieNeeded = bmr * 1.9;
+
+        }
+
+        calorieNeeded = Math.floor(calorieNeeded);
+        double calorieNeededPerDayLoseOnePounds = calorieNeeded - 500;
+        double calorieNeededPerDayLoseTwoPounds = calorieNeededPerDayLoseOnePounds - 500;
+        double calorieNeededPerDayLoseThreePounds = calorieNeededPerDayLoseTwoPounds - 500;
+
         String arrayToJson = "";
         return Response.status(200).entity(arrayToJson).build();
     }
 
 
-   /**
-    *  Calculate calories burned during a run.
-    *
-    *  Men use the following formula:
-    *  Calories Burned = [(Age x 0.2017) - (Weight x 0.09036) + (Heart Rate x 0.6309) - 55.0969] x Duration / 4.184.
-    *
-    *  Women use the following formula:
-    *  Calories Burned = [(Age x 0.074) - (Weight x 0.05741) + (Heart Rate x 0.4472) - 20.4022] x Duration / 4.184.
-    *
-    *  @param age
-    *  @param weight
-    *  @param heartRate
-    *  @param duration
-    *  @param gender
-    *
-    *  @return calories the calories burned during a run bases on gender
-    *
-    */
+    /**
+     * Calculate calories burned during a run.
+     * <p>
+     * Men use the following formula:
+     * Calories Burned = [(Age x 0.2017) - (Weight x 0.09036) + (Heart Rate x 0.6309) - 55.0969] x Duration / 4.184.
+     * <p>
+     * Women use the following formula:
+     * Calories Burned = [(Age x 0.074) - (Weight x 0.05741) + (Heart Rate x 0.4472) - 20.4022] x Duration / 4.184.
+     *
+     * @param age
+     * @param weight
+     * @param heartRate
+     * @param duration
+     * @param gender
+     * @return calories the calories burned during a run bases on gender
+     */
     @GET
     @Produces("text/plain")
     @Path("/{age}/{weight}/{heartRate}/{duration}/{gender}")
@@ -114,10 +158,8 @@ public class FitnessService {
     }
 
     /**
-     *
-     * @param weight    weight in lbs
-     * @param height    height in inches
-     *
+     * @param weight weight in lbs
+     * @param height height in inches
      * @return BMI - Body Mass Index
      */
 
@@ -135,10 +177,8 @@ public class FitnessService {
     }
 
     /**
-     *
-     * @param weight    weight in kg
-     * @param height    height in meters
-     *
+     * @param weight weight in kg
+     * @param height height in meters
      * @return BMI - Body Mass Index
      */
 
