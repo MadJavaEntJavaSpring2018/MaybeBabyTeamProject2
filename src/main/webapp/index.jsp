@@ -3,7 +3,7 @@
 <h2>Hello World! MaybeBabyTeamProject</h2>
 </body>
 </html>
-
+<!--
 <div class="accordion-group">
 
 <div id="distance" class="accordion-body in collapse" style="height: auto;">
@@ -54,4 +54,4 @@ Send a GET request to <code class="endpoint">https://AWS Link/fitness/service/1s
 </div>
 </form>
 </div>
-</div>
+</div>-->
