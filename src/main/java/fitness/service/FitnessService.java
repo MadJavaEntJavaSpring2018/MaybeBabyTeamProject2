@@ -43,6 +43,7 @@ public class FitnessService {
     @Produces({MediaType.APPLICATION_JSON})
     //@Produces("text/plain")
     @Path("/bmr/{weight}/{height}/{age}/{gender}")
+    //@Path("/bmr/html/{weight}/{height}/{age}/{gender}")
     public Response calculateBMR(
             @PathParam("weight") double weight, @PathParam("height") double height,
             @PathParam("age") int age, @PathParam("gender") String gender) {
@@ -53,7 +54,7 @@ public class FitnessService {
         } else if (gender.equals("male")) {
             bmr = 66 + (6.23 * weight) + (12.7 * height) - (6.8 * (double) age);
         }
-
+        //String html = "<p>Yout BMR is " + bmr + "</p>";
 
         return Response.status(200).entity(bmr + " " + gender).build();
     }
