@@ -3,6 +3,7 @@ package fitness.service;
 
 import org.json.JSONObject;
 
+import javax.json.Json;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -32,30 +33,84 @@ public class FitnessService {
      * <p>
      * Source: (http://www.healthfitonline.com/resources/harris_benedict.php)
      *
+     * This method returns the JSON response.
+     * @author Osamah Shareef
      * @param weight
      * @param height
      * @param age
      * @param gender
-     * @return bmr the Basal Metabolic Rate
+     * @param activity
+     * @return JSON object
      */
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    //@Produces("text/plain")
-    @Path("/bmr/{weight}/{height}/{age}/{gender}")
-    public Response calculateBMR(
+    @Path("/bmr/json/{weight}/{height}/{age}/{gender}/{activity}")
+    public Response getBMRJson(
             @PathParam("weight") double weight, @PathParam("height") double height,
-            @PathParam("age") int age, @PathParam("gender") String gender) {
+            @PathParam("age") int age, @PathParam("gender") String gender,
+            @PathParam("activity") String activity) {
 
+        JSONObject json = new JSONObject();
+        json.put("BMR", calculateBMR(gender, weight, height, age, activity));
+
+        return Response.status(200).entity(json.toString() + " calories you need each day to maintain you weight.").build();
+    }
+
+    /**
+     *  This method returns the JSON response.
+     * @author Osamah Shareef
+     * @param weight
+     * @param height
+     * @param age
+     * @param gender
+     * @param activity
+     * @return Html String
+     */
+    @GET
+    @Produces({MediaType.TEXT_HTML})
+    @Path("/bmr/html/{weight}/{height}/{age}/{gender}/{activity}")
+    public Response getBMRHtml(
+            @PathParam("weight") double weight, @PathParam("height") double height,
+            @PathParam("age") int age, @PathParam("gender") String gender,
+            @PathParam("activity") String activity) {
+
+        String html = "<p>Your BMR is " + calculateBMR(gender, weight, height, age, activity) + "</p>";
+
+        return Response.status(200).entity(html + " calories you need each day to maintain you weight.").build();
+    }
+
+
+    /**
+     * This method calculates the BMR.
+     * @author Osamah Shareef
+     * @param gender
+     * @param weight
+     * @param height
+     * @param age
+     * @param activity
+     */
+    private double calculateBMR(String gender, double weight, double height, int age, String activity) {
         double bmr = 0.0;
+        double calories = 0.0;
         if (gender.equals("female")) {
             bmr = 655 + (4.35 * weight) + (4.7 * height) - (4.7 * (double) age);
         } else if (gender.equals("male")) {
             bmr = 66 + (6.23 * weight) + (12.7 * height) - (6.8 * (double) age);
         }
 
-
-        return Response.status(200).entity(bmr + " " + gender).build();
+        if (activity.equals("sedentary")) {
+            calories = bmr * 1.2;
+        } else if (activity.equals("lightly")) {
+            calories = bmr * 1.375;
+        } else if (activity.equals("moderately")) {
+            calories = bmr * 1.55;
+        } else if (activity.equals("very")) {
+            calories = bmr * 1.725;
+        } else if (activity.equals("extra")) {
+            calories = bmr * 1.9;
+        }
+        return calories;
     }
 
 
@@ -122,43 +177,55 @@ public class FitnessService {
         return Response.status(200).entity(json.toString()).build();
     }
 
-
     /**
      * Calculate calories burned during a run.
-     * <p>
-     * Men use the following formula:
-     * Calories Burned = [(Age x 0.2017) - (Weight x 0.09036) + (Heart Rate x 0.6309) - 55.0969] x Duration / 4.184.
-     * <p>
-     * Women use the following formula:
-     * Calories Burned = [(Age x 0.074) - (Weight x 0.05741) + (Heart Rate x 0.4472) - 20.4022] x Duration / 4.184.
      *
-     * @param age
+     * @param distance
      * @param weight
-     * @param heartRate
-     * @param duration
-     * @param gender
-     * @return calories the calories burned during a run bases on gender
+     * @return Calories - The calories burned during a run
      */
     @GET
-    @Produces("text/plain")
-    @Path("/{age}/{weight}/{heartRate}/{duration}/{gender}")
-    public Response calculateCaloriesBurned(
-            @PathParam("age") int age,
-            @PathParam("weight") int weight,
-            @PathParam("heartRate") int heartRate,
-            @PathParam("duration") int duration,
-            @PathParam("gender") String gender) {
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/ccb/json/{distance}/{weight}")
+    public Response getJSONCaloriesBurned(
+            @PathParam("distance") double distance,
+            @PathParam("weight") int weight) {
 
         double calories = 0.0;
 
-        if (gender.equals("female")) {
-            calories = ((age * 0.074) - (weight * 0.05741) + (heartRate * 0.4472) - 20.4022) * duration / 4.184;
-        } else if (gender.equals("male")) {
-            calories = ((age * 0.2017) - (weight * 0.09036) + (heartRate * 0.6309) - 55.0969) * duration / 4.184;
-        }
+        calories = (int)((distance * 1.60934) * (weight * 0.453592) * 1.036);
+
         {
-            return Response.status(200).entity(calories + " " + gender).build();
+            JSONObject json = new JSONObject();
+            json.put("CaloriesBurned", calories);
+            return Response.status(200).entity(json.toString()).build();
         }
+    }
+
+    /**
+     * Calculate calories burned during a run.
+     *
+     * @param distance
+     * @param weight
+     * @return Calories - The calories burned during a run
+     */
+    @GET
+    @Produces(MediaType.TEXT_HTML)
+    @Path("/ccb/html/{distance}/{weight}")
+    public Response getHTMLCaloriesBurned(
+            @PathParam("distance") double distance,
+            @PathParam("weight") int weight) {
+
+        double calories = 0.0;
+        String response;
+
+        calories = (int)((distance * 1.60934) * (weight * 0.453592) * 1.036);
+
+        {
+            response =  "<html> " + "Calories burned: " + calories + "</html>";
+            return Response.status(200).entity(response).build();
+        }
+
     }
 
     /**

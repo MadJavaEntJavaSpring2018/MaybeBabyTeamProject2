@@ -1,6 +1,83 @@
 <html>
+<head>
+    <title>Fitness Service</title>
+</head>
 <body>
 <h2>Hello World! MaybeBabyTeamProject</h2>
+
+<!-- BMR calculation form -->
+<div class="accordion-group">
+    <h3>Calculate BMR</h3>
+    <div>
+        <form action="calculateBMR" method="get">
+            <div>
+                <p>
+                    Use this API to calculate BMR (Basal Metabolic Rate)  is an estimate of how many calories you'd burn if you were to do nothing but rest for 24 hours.
+                    It represents the minimum amount of energy needed to keep your body functioning, including breathing and keeping your heart beating.
+                    Send a GET request to <code>https://AWS Link/fitness/service/bmr/weight/height/age/gender/activity</code>.
+                </p>
+
+                <div>
+                    <div>
+                        <label>Format</label>
+                        <select name="format" required="required">
+                            <option value="json">Json</option>
+                            <option value="html">Html</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>Weight</label>
+                        <input type="text" name="weight" placeholder="Weight" required="required">
+                    </div>
+
+                    <div>
+                        <label>Height</label>
+                        <input type="text" name="height" placeholder="Height" required="required">
+                    </div>
+                    <div>
+                        <label>Age</label>
+                        <input type="text" name="age" placeholder="Age" required="required">
+                    </div>
+                    <div>
+                        <label>Gender</label>
+                        <select name="gender" required="required">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Activity</label>
+                        <select name="activity" required="required">
+                            <option value="sedentary">Sedentary (little or no exercise)</option>
+                            <option value="lightly">Lightly active (light exercise/sports 1-3 days/week)</option>
+                            <option value="moderately">Moderately active (moderate exercise/sports 3-5 days/week)</option>
+                            <option value="very">Very active (hard exercise/sports 6-7 days a week)</option>
+                            <option value="extra">Extra active (very hard exercise/sports & physical job or 2x training)</option>
+                        </select>
+                    </div>
+
+
+                    <div>
+                        <label>Units</label>
+                        <select name="units" required="required">
+                            <option value="kg">KG</option>
+                            <option value="lbs">LBS</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>&nbsp;</label>
+                        <input type="submit" name="submit"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <h3>BMR Done</h3>
+</div>
+
+>>>>>>> 2844e274e3c29fff5791730cca3bdd62b184adc0
 <!--
 <div class="accordion-group">
 
