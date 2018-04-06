@@ -1,8 +1,6 @@
 <html>
 <body>
 <h2>Hello World! MaybeBabyTeamProject</h2>
-</body>
-</html>
 <!--
 <div class="accordion-group">
 
@@ -55,3 +53,67 @@ Send a GET request to <code class="endpoint">https://AWS Link/fitness/service/1s
 </form>
 </div>
 </div>-->
+
+<a href="/calculateCalorieServlet">Calorie Calculator</a>
+
+<form action="/calculateCalorieServlet" name="calform" method="post">
+    <table id="calinputtable" width="420">
+        <tbody>
+        <tr>
+            <td width="50">Age</td>
+            <td width="370">
+                <input type="text" name="age" id="age" value="" class="innormal">
+            </td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>
+                <label for="gender1">
+                    <input type="radio" name="gender" id="gender1" value="m"> male</label> &nbsp;
+                <label for="gender2">
+                    <input type="radio" name="gender" id="gender2" value="f"> female</label>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <table width="420" id="standardheightweight" style="display: block;">
+        <tbody>
+        <tr>
+            <td width="50">Height</td>
+            <td width="370">
+                <input type="text" name="height" id="height" value="" class="in4char"> cms
+            </td>
+        </tr>
+        <tr>
+            <td>Weight</td>
+            <td>
+                <input type="text" name="weight" id="weight" value="" class="innormal"> kg
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <table width="500">
+        <tbody>
+        <tr>
+            <td width="50">Activity</td>
+            <td width="450">
+                <select id="activity" name="activity">
+                    <option value="sed">Sedentary - little or no exercise</option>
+                    <option value="lht">Lightly Active - exercise/sports 1-3 times/week</option>
+                    <option value="mod">Moderatetely Active - exercise/sports 3-5 times/week</option>
+                    <option value="hrd">Very Active - hard exercise/sports 6-7 times/week</option>
+                    <option value="ext">Extra Active - very hard exercise/sports or physical job</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td width="50">&nbsp;</td>
+            <td width="450">
+                <input type="submit" value="submit">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

@@ -92,19 +92,19 @@ public class FitnessService {
 
 
         // Calories needed based on activity type
-        if (activity.equals("sedentary")) {
+        if (activity.equals("sed")) {
             calorieNeeded = bmr * 1.2;
 
-        } else if (activity.equals("light")) {
+        } else if (activity.equals("lht")) {
             calorieNeeded = bmr * 1.375;
 
-        } else if (activity.equals("moderate")) {
+        } else if (activity.equals("mod")) {
             calorieNeeded = bmr * 1.55;
 
-        } else if (activity.equals("heavy")) {
+        } else if (activity.equals("hrd")) {
             calorieNeeded = bmr * 1.725;
 
-        } else if (activity.equals("extra")) {
+        } else if (activity.equals("ext")) {
             calorieNeeded = bmr * 1.9;
 
         }
@@ -114,8 +114,12 @@ public class FitnessService {
         double calorieNeededPerDayLoseTwoPounds = calorieNeededPerDayLoseOnePounds - 500;
         double calorieNeededPerDayLoseThreePounds = calorieNeededPerDayLoseTwoPounds - 500;
 
-        String arrayToJson = "";
-        return Response.status(200).entity(arrayToJson).build();
+        JSONObject json = new JSONObject();
+        json.put("clrsPerDayMntnWt", String.valueOf(calorieNeeded));
+        json.put("clrsPerDayLs1PndsPerWk", String.valueOf(calorieNeededPerDayLoseOnePounds));
+        json.put("clrsPerDayLs2PndsPerWk", String.valueOf(calorieNeededPerDayLoseTwoPounds));
+
+        return Response.status(200).entity(json.toString()).build();
     }
 
 
