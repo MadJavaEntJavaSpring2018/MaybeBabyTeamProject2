@@ -43,10 +43,11 @@ public class FitnessService {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Path("/bmr")
-    public Response getBMRcalculations( @FormParam("format") String format,
-            @FormParam("weight") double weight, @FormParam("height") double height,
-            @FormParam("age") int age, @FormParam("gender") String gender,
-            @FormParam("activity") String activity, @FormParam("unit") String unit) {
+    public Response getBMRcalculations(
+            @FormParam("format") String format, @FormParam("weight") double weight,
+            @FormParam("height") double height, @FormParam("age") int age,
+            @FormParam("gender") String gender, @FormParam("activity") String activity,
+            @FormParam("unit") String unit) {
 
         if (format.equals("json")) {
             JSONObject json = new JSONObject();
