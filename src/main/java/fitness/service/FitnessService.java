@@ -4,10 +4,7 @@ package fitness.service;
 import org.json.JSONObject;
 
 import javax.json.Json;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.text.DecimalFormat;
@@ -43,18 +40,22 @@ public class FitnessService {
      * @return JSON object
      */
 
-    @GET
+    @POST
     @Produces({MediaType.APPLICATION_JSON})
-    @Path("/bmr/json/{weight}/{height}/{age}/{gender}/{activity}")
-    public Response getBMRJson(
-            @PathParam("weight") double weight, @PathParam("height") double height,
-            @PathParam("age") int age, @PathParam("gender") String gender,
-            @PathParam("activity") String activity) {
+    @Path("/bmr")
+    public Response getBMRJson( @FormParam("format") String format,
+            @FormParam("weight") double weight, @FormParam("height") double height,
+            @FormParam("age") int age, @FormParam("gender") String gender,
+            @FormParam("activity") String activity) {
 
-        JSONObject json = new JSONObject();
-        json.put("BMR", calculateBMR(gender, weight, height, age, activity));
-
-        return Response.status(200).entity(json.toString() + " calories you need each day to maintain you weight.").build();
+        if (format.equals("json")) {
+            JSONObject json = new JSONObject();
+            json.put("BMR", calculateBMR(gender, weight, height, age, activity));
+            return Response.status(200).entity(json.toString() + " calories you need each day to maintain you weight.").build();
+        } else {
+            String html = "Your BMR is " + calculateBMR(gender, weight, height, age, activity);
+            return Response.status(200).entity(html + " calories you need each day to maintain you weight.").build();
+        }
     }
 
     /**
@@ -67,7 +68,7 @@ public class FitnessService {
      * @param activity
      * @return Html String
      */
-    @GET
+    /*@GET
     @Produces({MediaType.TEXT_HTML})
     @Path("/bmr/html/{weight}/{height}/{age}/{gender}/{activity}")
     public Response getBMRHtml(
@@ -78,7 +79,7 @@ public class FitnessService {
         String html = "<p>Your BMR is " + calculateBMR(gender, weight, height, age, activity) + "</p>";
 
         return Response.status(200).entity(html + " calories you need each day to maintain you weight.").build();
-    }
+    }*/
 
 
     /**
