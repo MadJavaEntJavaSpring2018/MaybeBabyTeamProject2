@@ -19,7 +19,7 @@ public class FitnessService {
      * 1. Calculate your BMR (basal metabolic rate):
      * Women: BMR = 655 + ( 4.35 x weight in pounds ) + ( 4.7 x height in inches ) - ( 4.7 x age in years )
      * Men: BMR = 66 + ( 6.23 x weight in pounds ) + ( 12.7 x height in inches ) - ( 6.8 x age in years )
-     * <p>
+     *
      * 2. Multiply your BMR by the appropriate activity factor, as follows:
      * Sedentary (little or no exercise): BMR x 1.2
      * Lightly active (light exercise/sports 1-3 days/week): BMR x 1.375
@@ -27,7 +27,7 @@ public class FitnessService {
      * Very active (hard exercise/sports 6-7 days a week): BMR x 1.725
      * Extra active (very hard exercise/sports & physical job or 2x training): BMR x 1.9
      * 3. Your final number is the approximate number of calories you need each day to maintain your weight.
-     * <p>
+     *
      * Source: (http://www.healthfitonline.com/resources/harris_benedict.php)
      *
      * This method returns the JSON response.
@@ -43,7 +43,7 @@ public class FitnessService {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Path("/bmr")
-    public Response getBMRJson( @FormParam("format") String format,
+    public Response getBMRcalculations( @FormParam("format") String format,
             @FormParam("weight") double weight, @FormParam("height") double height,
             @FormParam("age") int age, @FormParam("gender") String gender,
             @FormParam("activity") String activity) {
@@ -57,30 +57,6 @@ public class FitnessService {
             return Response.status(200).entity(html + " calories you need each day to maintain you weight.").build();
         }
     }
-
-    /**
-     *  This method returns the JSON response.
-     * @author Osamah Shareef
-     * @param weight
-     * @param height
-     * @param age
-     * @param gender
-     * @param activity
-     * @return Html String
-     */
-    /*@GET
-    @Produces({MediaType.TEXT_HTML})
-    @Path("/bmr/html/{weight}/{height}/{age}/{gender}/{activity}")
-    public Response getBMRHtml(
-            @PathParam("weight") double weight, @PathParam("height") double height,
-            @PathParam("age") int age, @PathParam("gender") String gender,
-            @PathParam("activity") String activity) {
-
-        String html = "<p>Your BMR is " + calculateBMR(gender, weight, height, age, activity) + "</p>";
-
-        return Response.status(200).entity(html + " calories you need each day to maintain you weight.").build();
-    }*/
-
 
     /**
      * This method calculates the BMR.
