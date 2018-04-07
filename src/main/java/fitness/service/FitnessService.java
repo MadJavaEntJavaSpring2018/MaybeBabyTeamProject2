@@ -46,20 +46,20 @@ public class FitnessService {
     public Response getBMRcalculations( @FormParam("format") String format,
             @FormParam("weight") double weight, @FormParam("height") double height,
             @FormParam("age") int age, @FormParam("gender") String gender,
-            @FormParam("activity") String activity) {
+            @FormParam("activity") String activity, @FormParam("unit") String unit) {
 
         if (format.equals("json")) {
             JSONObject json = new JSONObject();
-            json.put("BMR", calculateBMR(gender, weight, height, age, activity));
+            json.put("BMR", calculateBMR(gender, weight, height, age, activity, unit));
             return Response.status(200).entity(json.toString() + " calories you need each day to maintain you weight.").build();
         } else {
-            String html = "Your BMR is " + calculateBMR(gender, weight, height, age, activity);
+            String html = "Your BMR is " + calculateBMR(gender, weight, height, age, activity, unit);
             return Response.status(200).entity(html + " calories you need each day to maintain you weight.").build();
         }
     }
 
     /**
-     * This method calculates the BMR.
+     * This method calculates the BMR both in KG & LBS.
      * @author Osamah Shareef
      * @param gender
      * @param weight
@@ -67,13 +67,21 @@ public class FitnessService {
      * @param age
      * @param activity
      */
-    private double calculateBMR(String gender, double weight, double height, int age, String activity) {
+    private double calculateBMR(String gender, double weight, double height, int age, String activity, String unit) {
         double bmr = 0.0;
         double calories = 0.0;
         if (gender.equals("female")) {
-            bmr = 655 + (4.35 * weight) + (4.7 * height) - (4.7 * (double) age);
+            if (unit.equals("lbs")) {
+                bmr = 655 + (4.35 * weight) + (4.7 * height) - (4.7 * (double) age);
+            } else if (unit.equals("kg")) {
+                bmr = 655.1 + ( 9.563 * weight) + (1.850 * height) - (4.676 * (double) age);
+            }
         } else if (gender.equals("male")) {
-            bmr = 66 + (6.23 * weight) + (12.7 * height) - (6.8 * (double) age);
+            if (unit.equals("lbs")) {
+                bmr = 66 + (6.23 * weight) + (12.7 * height) - (6.8 * (double) age);
+            } else if (unit.equals("kg")) {
+                bmr = 66.5 + (13.75 * weight) + (5.003 * height) - (6.755 * age);
+            }
         }
 
         if (activity.equals("sedentary")) {
