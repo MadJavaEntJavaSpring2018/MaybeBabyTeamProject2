@@ -1,7 +1,7 @@
 **Problem Statement:**
 
 Fitness related calculations are a constant gripe for developers creating fitness-based applications. Maybe Baby's fitness calculations web service takes care of various fitness related calculations for the user. 
-All that is needed is to pass the needed parameters, and FitnessCalc will return the results!
+All that is needed is to pass the needed parameters, and FitnessCalc will return the results! This service will return results in both JSON and HTML format, also will return results in both Metric and US/English units 
 
 
 **Project Technologies/Techniques**

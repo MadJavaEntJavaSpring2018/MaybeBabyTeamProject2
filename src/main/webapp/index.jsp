@@ -9,7 +9,7 @@
 <div class="accordion-group">
     <h3>Calculate BMR</h3>
     <div>
-        <form action="calculateBMR" method="get">
+        <form action="fitness/service/bmr" method="post">
             <div>
                 <p>
                     Use this API to calculate BMR (Basal Metabolic Rate)  is an estimate of how many calories you'd burn if you were to do nothing but rest for 24 hours.
@@ -60,7 +60,7 @@
 
                     <div>
                         <label>Units</label>
-                        <select name="units" required="required">
+                        <select name="unit" required="required">
                             <option value="kg">KG</option>
                             <option value="lbs">LBS</option>
                         </select>
