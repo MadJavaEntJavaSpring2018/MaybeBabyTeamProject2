@@ -9,5 +9,6 @@
 |     4/4/2018  |     3   |   Rashid Malik   |    Added controller and Result jsp for Fat, Protein and Carbohydrates daily consumption |
 |     4/6/2018  |     3   |   Osamah Shareef   |    Modified the form method to post and change the service to @POST, added KG & LBS calculations. |
 |     4/7/2018  |     3   |   Osamah Shareef   |    Added Unit test for BMR service. |
-|     4/7/2018  |     3   |   Rashid Malik   |    Added more functionality to accommodate HTML and JSON format |
-|     4/8/2018  |     3   |   Rashid Malik   |    Added more functionality and given final touch |
+|     4/7/2018  |     2   |   Rashid Malik   |    Added more functionality to accommodate HTML and JSON format |
+|     4/8/2018  |     2   |   Rashid Malik   |    Added more functionality and given final touch |
+|     4/8/2018  |     2   |   Rashid Malik   |    Added unit tests and updated time log, added description to problem solution and web service functions |

@@ -35,4 +35,18 @@ public class FitnessServiceTest {
         Response bmr = fitnessService.getBMRcalculations("json",85,178,34,"male","very","kg");
         assertEquals("{\"BMR\":3270.79665} calories you need each day to maintain you weight.", bmr.getEntity());
     }
+
+    @Test
+    void calculateFatProtienCarboHyderatesRequiredPerDayJson() {
+        Response respone = fitnessService.calculateFatProtienCarboHyderatesRequiredPerDayJson(100, 178, 37, "m", "sed");
+        assertEquals("[{\"Carbohydrates\":144,\"Fat\":64,\"Protein\":144},{\"Carbohydrates\":113,\"Fat\":50,\"Protein\":113},{\"Carbohydrates\":82,\"Fat\":36,\"Protein\":82}]"
+                , respone.getEntity().toString());
+    }
+
+    @Test
+    void calculateFatProtienCarboHyderatesRequiredPerDayHtml() {
+        Response response = fitnessService.calculateFatProtienCarboHyderatesRequiredPerDayHtml(100, 178, 37, "m", "sed");
+        assertEquals("<h3>Maintain weight</h3><table border = '1'><tbody><tr><td><b>Daily intake</b></td><td><b>grams</b><"
+                , response.getEntity().toString().substring(0,100));
+    }
 }
