@@ -128,9 +128,9 @@ public class FitnessService {
 
         CalculateCalorieBO ccbo = new CalculateCalorieBO();
         double calorieNeeded = ccbo.calculateCalorie(weight, height, age, gender, activity);
-
+        //Create json array
         JSONArray json = ccbo.getJasonObject(calorieNeeded);
-
+            //pass json response
             return Response.status(200).entity(json.toString()).build();
     }
 
