@@ -137,7 +137,7 @@ Send a GET request to <code class="endpoint">https://AWS Link/fitness/service/1s
                           <code>https://AWS Link/fitness/service/ccr/html/weight/height/age/gender/activity</code>.
 </p>
 
-<form action="/calculateCalorieServlet" name="calform" method="get">
+<form action="/calculateCalorieServlet" name="calform" method="post">
     <table id="calinputtable" width="420">
         <tbody>
         <tr>
