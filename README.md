@@ -2,7 +2,11 @@
 
 Fitness related calculations are a constant gripe for developers creating fitness-based applications. Maybe Baby's fitness calculations web service takes care of various fitness related calculations for the user. 
 All that is needed is to pass the needed parameters, and FitnessCalc will return the results! This service will return results in both JSON and HTML format, also will return results in both Metric and US/English units 
-
+Using this API, User can consume following services.
+* Calculate BMI.
+* Calculate BMR.
+* Calculate amount of Fat, Protein and Carbohydrates required per day.
+* Calculate calories burned during a run.
 
 **Project Technologies/Techniques**
 
@@ -24,11 +28,11 @@ JUnit tests to achieve 80%+ code coverage
 * Coming soon.
 * [Screen Design]
 
-**Project Plan**
 * [Project Plan](ProjectPlan.md)
 
-**TimeLog**
 * [Timelog](timelog.md)
+
+* [Web Service Functions](API_functions.md)
 
 
 

@@ -135,7 +135,7 @@ public class FitnessService {
     }
 
     /**
-     * Calculate fat protien carbo hyderates required per day html response.
+     * Calculate fat protien carbohyderates required per day html response.
      *
      * @param weight   the weight
      * @param height   the height
