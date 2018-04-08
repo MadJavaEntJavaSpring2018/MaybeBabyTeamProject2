@@ -14,14 +14,13 @@ import java.text.DecimalFormat;
 /**
  * This is the service class. You can add your calculating methods in here.
  */
-
 @Path("/service")
 public class FitnessService {
     /**
      * 1. Calculate your BMR (basal metabolic rate):
      * Women: BMR = 655 + ( 4.35 x weight in pounds ) + ( 4.7 x height in inches ) - ( 4.7 x age in years )
      * Men: BMR = 66 + ( 6.23 x weight in pounds ) + ( 12.7 x height in inches ) - ( 6.8 x age in years )
-     *
+     * <p>
      * 2. Multiply your BMR by the appropriate activity factor, as follows:
      * Sedentary (little or no exercise): BMR x 1.2
      * Lightly active (light exercise/sports 1-3 days/week): BMR x 1.375
@@ -29,18 +28,22 @@ public class FitnessService {
      * Very active (hard exercise/sports 6-7 days a week): BMR x 1.725
      * Extra active (very hard exercise/sports & physical job or 2x training): BMR x 1.9
      * 3. Your final number is the approximate number of calories you need each day to maintain your weight.
-     *
+     * <p>
      * Source: (http://www.healthfitonline.com/resources/harris_benedict.php)
-     *
+     * <p>
      * This method returns the JSON response.
-     * @author Osamah Shareef
-     * @param weight
-     * @param height
-     * @param age
-     * @param gender
-     * @param activity
+     *
+     * @param format   the format
+     * @param weight   the weight
+     * @param height   the height
+     * @param age      the age
+     * @param gender   the gender
+     * @param activity the activity
+     * @param unit     the unit
      * @return JSON object
+     * @author Osamah Shareef
      */
+
 
     @POST
     @Produces({MediaType.APPLICATION_JSON})
@@ -103,12 +106,14 @@ public class FitnessService {
 
 
     /**
-     * @param weight
-     * @param height
-     * @param age
-     * @param gender
-     * @param activity
-     * @return
+     * Calculate fat protien carbo hyderates required per day json response.
+     *
+     * @param weight   the weight
+     * @param height   the height
+     * @param age      the age
+     * @param gender   the gender
+     * @param activity the activity
+     * @return response
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -129,6 +134,16 @@ public class FitnessService {
             return Response.status(200).entity(json.toString()).build();
     }
 
+    /**
+     * Calculate fat protien carbo hyderates required per day html response.
+     *
+     * @param weight   the weight
+     * @param height   the height
+     * @param age      the age
+     * @param gender   the gender
+     * @param activity the activity
+     * @return the response
+     */
     @GET
     @Produces(MediaType.TEXT_HTML)
     @Path("/ccr/html/{weight}/{height}/{age}/{gender}/{activity}")
@@ -151,8 +166,8 @@ public class FitnessService {
     /**
      * Calculate calories burned during a run.
      *
-     * @param distance
-     * @param weight
+     * @param distance the distance
+     * @param weight   the weight
      * @return Calories - The calories burned during a run
      */
     @GET
@@ -176,8 +191,8 @@ public class FitnessService {
     /**
      * Calculate calories burned during a run.
      *
-     * @param distance
-     * @param weight
+     * @param distance the distance
+     * @param weight   the weight
      * @return Calories - The calories burned during a run
      */
     @GET
@@ -200,11 +215,12 @@ public class FitnessService {
     }
 
     /**
+     * Calculate bm ilbs response.
+     *
      * @param weight weight in lbs
      * @param height height in inches
      * @return BMI - Body Mass Index
      */
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/bmilbs/{weight}/{height}")
@@ -219,11 +235,12 @@ public class FitnessService {
     }
 
     /**
+     * Calculate bm ikg response.
+     *
      * @param weight weight in kg
      * @param height height in meters
      * @return BMI - Body Mass Index
      */
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/bmikg/{weight}/{height}")
