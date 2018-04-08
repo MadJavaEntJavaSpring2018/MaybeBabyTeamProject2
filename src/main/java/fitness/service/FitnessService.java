@@ -164,7 +164,7 @@ public class FitnessService {
     }
 
     /**
-     * Calculate calories burned during a run.
+     * Calculate calories burned during a run json response.
      *
      * @param distance the distance
      * @param weight   the weight
@@ -172,14 +172,14 @@ public class FitnessService {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/ccb/json/{distance}/{weight}")
+    @Path("/crc/json/{distance}/{weight}")
     public Response getJSONCaloriesBurned(
             @PathParam("distance") double distance,
             @PathParam("weight") int weight) {
 
-        double calories = 0.0;
+        int calories;
 
-        calories = (int)((distance * 1.60934) * (weight * 0.453592) * 1.036);
+        calories = calculateRunCalories(distance,weight);
 
         {
             JSONObject json = new JSONObject();
@@ -189,7 +189,7 @@ public class FitnessService {
     }
 
     /**
-     * Calculate calories burned during a run.
+     * Calculate calories burned during a run html response.
      *
      * @param distance the distance
      * @param weight   the weight
@@ -197,21 +197,33 @@ public class FitnessService {
      */
     @GET
     @Produces(MediaType.TEXT_HTML)
-    @Path("/ccb/html/{distance}/{weight}")
+    @Path("/crc/html/{distance}/{weight}")
     public Response getHTMLCaloriesBurned(
             @PathParam("distance") double distance,
             @PathParam("weight") int weight) {
 
-        double calories = 0.0;
-        String response;
+        int calories;
 
-        calories = (int)((distance * 1.60934) * (weight * 0.453592) * 1.036);
+        String outHTML;
+
+        calories = calculateRunCalories(distance,weight);
 
         {
-            response =  "<html> " + "Calories burned: " + calories + "</html>";
-            return Response.status(200).entity(response).build();
+            outHTML =  "<h3>" + "Calories burned: " + calories + "</h3>";
+            return Response.status(200).entity(outHTML).build();
         }
 
+    }
+
+    /**
+     * Calculate calories burned during a run based on an average of 12 minute miles.
+     *
+     * @param distance distance in miles
+     * @param weight weight in lbs
+     * @return Calories Burned - Calories Burned during a run.
+     */
+    protected int calculateRunCalories (double distance, double weight){
+        return (int)((distance * 1.60934) * (weight * 0.453592) * 1.036);
     }
 
     /**

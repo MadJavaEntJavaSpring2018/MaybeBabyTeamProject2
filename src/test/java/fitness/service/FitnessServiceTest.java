@@ -49,4 +49,31 @@ public class FitnessServiceTest {
         assertEquals("<h3>Maintain weight</h3><table border = '1'><tbody><tr><td><b>Daily intake</b></td><td><b>grams</b><"
                 , response.getEntity().toString().substring(0,100));
     }
+
+    /**
+     * Test RunCaloriesBurned calculation.
+     */
+    @Test
+    void calculateRunCaloriesBurned() {
+        int caloriesBurned = fitnessService.calculateRunCalories(5,200);
+        assertEquals(756, caloriesBurned);
+    }
+
+    /**
+     * Test RunCaloriesBurned json response.
+     */
+    @Test
+    void calculateRunCaloriesBurnedJSON() {
+        Response respone = fitnessService.getJSONCaloriesBurned(5, 200) ;
+        assertEquals("{\"CaloriesBurned\":756}"
+                , respone.getEntity().toString());
+    }
+
+    @Test
+    void calculateRunCaloriesBurnedHTML() {
+        Response response = fitnessService.getHTMLCaloriesBurned(5, 200);
+        assertEquals("<h3>Calories burned: 756</h3>"
+                , response.getEntity().toString());
+    }
+
 }

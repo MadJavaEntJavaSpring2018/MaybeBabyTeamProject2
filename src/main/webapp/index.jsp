@@ -208,3 +208,45 @@ Send a GET request to <code class="endpoint">https://AWS Link/fitness/service/1s
 </body>
 </html>
 <%--Calculation Fat, Protein and carbohydrates done--%>
+
+<h3>Calculate Calories Burned (Running)</h3>
+<p>
+    Use this API to calculate how many calories are burning during a run based on 12 minute miles.
+    Send a GET request to <code>https://AWS Link/fitness/service/ccr/json/weight/height/age/gender/activity</code>
+    OR
+    <code>https://AWS Link/fitness/service/crc/html/distance/weight</code>.
+</p>
+<form action="/calculateRunCalorieServlet" method="GET">
+
+    <table width="420" id="caloriesburnedinput" style="display: block;">
+        <tbody>
+        <tr>
+            <td>Distance</td>
+            <td>
+                <input type="text" name="distance" id="caloriesburneddistance"  placeholder="miles" required="required">
+            </td>
+        </tr>
+        <tr>
+            <td>Weight</td>
+            <td>
+                <input type="text" name="weight" id="caloriesburnedweight"  placeholder="pounds" required="required">
+            </td>
+        </tr>
+        <tr>
+            <td width="50">Format</td>
+            <td width="450">
+                <select name="format" required="required">
+                    <option value="json">Json</option>
+                    <option value="html">Html</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td width="50">&nbsp;</td>
+            <td width="450">
+                <input type="submit" value="submit">
+            </td>
+        </tr>
+          </tbody>
+    </table>
+</form>
