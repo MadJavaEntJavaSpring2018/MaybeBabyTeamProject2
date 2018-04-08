@@ -1,6 +1,8 @@
 package fitness.service;
 
 
+import fitness.business.CalculateCalorieBO;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.json.Json;
@@ -124,57 +126,40 @@ public class FitnessService {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/ccr/{weight}/{height}/{age}/{gender}/{activity}")
-    public Response calculateCaloriesRequiredPerDay(
+    @Path("/ccr/json/{weight}/{height}/{age}/{gender}/{activity}")
+    public Response calculateFatProtienCarboHyderatesRequiredPerDayJson(
             @PathParam("weight") double weight,
             @PathParam("height") double height,
             @PathParam("age") int age,
             @PathParam("gender") String gender,
             @PathParam("activity") String activity
     ) {
-        double calorieNeeded = 0.0;
-        double bmr = 0.0;
-        // weight in kg
-        // height in cm
-        age = Math.round(age);
 
-        if (gender.equals("male")) {
-            bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+        CalculateCalorieBO ccbo = new CalculateCalorieBO();
+        double calorieNeeded = ccbo.calculateCalorie(weight, height, age, gender, activity);
 
-        } else {
-            bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
-        }
+        JSONArray json = ccbo.getJasonObject(calorieNeeded);
 
+            return Response.status(200).entity(json.toString()).build();
+    }
 
-        // Calories needed based on activity type
-        if (activity.equals("sed")) {
-            calorieNeeded = bmr * 1.2;
+    @GET
+    @Produces(MediaType.TEXT_HTML)
+    @Path("/ccr/html/{weight}/{height}/{age}/{gender}/{activity}")
+    public Response calculateFatProtienCarboHyderatesRequiredPerDayHtml(
+            @PathParam("weight") double weight,
+            @PathParam("height") double height,
+            @PathParam("age") int age,
+            @PathParam("gender") String gender,
+            @PathParam("activity") String activity
+    ) {
 
-        } else if (activity.equals("lht")) {
-            calorieNeeded = bmr * 1.375;
+        CalculateCalorieBO ccbo = new CalculateCalorieBO();
+        double calorieNeeded = ccbo.calculateCalorie(weight, height, age, gender, activity);
 
-        } else if (activity.equals("mod")) {
-            calorieNeeded = bmr * 1.55;
+        String outHTML = ccbo.getHTML(calorieNeeded);
 
-        } else if (activity.equals("hrd")) {
-            calorieNeeded = bmr * 1.725;
-
-        } else if (activity.equals("ext")) {
-            calorieNeeded = bmr * 1.9;
-
-        }
-
-        calorieNeeded = Math.floor(calorieNeeded);
-        double calorieNeededPerDayLoseOnePounds = calorieNeeded - 500;
-        double calorieNeededPerDayLoseTwoPounds = calorieNeededPerDayLoseOnePounds - 500;
-        double calorieNeededPerDayLoseThreePounds = calorieNeededPerDayLoseTwoPounds - 500;
-
-        JSONObject json = new JSONObject();
-        json.put("clrsPerDayMntnWt", String.valueOf(calorieNeeded));
-        json.put("clrsPerDayLs1PndsPerWk", String.valueOf(calorieNeededPerDayLoseOnePounds));
-        json.put("clrsPerDayLs2PndsPerWk", String.valueOf(calorieNeededPerDayLoseTwoPounds));
-
-        return Response.status(200).entity(json.toString()).build();
+        return Response.status(200).entity(outHTML).build();
     }
 
     /**

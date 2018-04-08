@@ -76,8 +76,6 @@
     </div>
     <h3>BMR Done</h3>
 </div>
-
->>>>>>> 2844e274e3c29fff5791730cca3bdd62b184adc0
 <!--
 <div class="accordion-group">
 
@@ -131,15 +129,21 @@ Send a GET request to <code class="endpoint">https://AWS Link/fitness/service/1s
 </div>
 </div>-->
 
-<a href="/calculateCalorieServlet">Calorie Calculator</a>
+<h3>Calculate Fat, Protein and Carbohydrates</h3>
+<p>
+    Use this API to calculate how much amount of Fat, Protein and Carbohydrates you needed per day to maintain weight / to lose 1 lb per week / to lose 2 lbs per week.
+    Send a GET request to <code>https://AWS Link/fitness/service/ccr/json/weight/height/age/gender/activity</code>
+                                                            OR
+                          <code>https://AWS Link/fitness/service/ccr/html/weight/height/age/gender/activity</code>.
+</p>
 
-<form action="/calculateCalorieServlet" name="calform" method="post">
+<form action="/calculateCalorieServlet" name="calform" method="get">
     <table id="calinputtable" width="420">
         <tbody>
         <tr>
             <td width="50">Age</td>
             <td width="370">
-                <input type="text" name="age" id="age" value="" class="innormal">
+                <input type="text" name="age" id="age" value="" class="innormal" required="required">
             </td>
         </tr>
         <tr>
@@ -158,13 +162,13 @@ Send a GET request to <code class="endpoint">https://AWS Link/fitness/service/1s
         <tr>
             <td width="50">Height</td>
             <td width="370">
-                <input type="text" name="height" id="height" value="" class="in4char"> cms
+                <input type="text" name="height" id="height" value="" class="in4char" required="required"> cms
             </td>
         </tr>
         <tr>
             <td>Weight</td>
             <td>
-                <input type="text" name="weight" id="weight" value="" class="innormal"> kg
+                <input type="text" name="weight" id="weight" value="" class="innormal" required="required"> kg
             </td>
         </tr>
         </tbody>
@@ -174,13 +178,22 @@ Send a GET request to <code class="endpoint">https://AWS Link/fitness/service/1s
         <tr>
             <td width="50">Activity</td>
             <td width="450">
-                <select id="activity" name="activity">
+                <select id="activity" name="activity" required="required">
                     <option value="sed">Sedentary - little or no exercise</option>
                     <option value="lht">Lightly Active - exercise/sports 1-3 times/week</option>
                     <option value="mod">Moderatetely Active - exercise/sports 3-5 times/week</option>
                     <option value="hrd">Very Active - hard exercise/sports 6-7 times/week</option>
                     <option value="ext">Extra Active - very hard exercise/sports or physical job</option>
                 </select>
+            </td>
+        </tr>
+        <tr>
+            <td width="50">Format</td>
+            <td width="450">
+            <select name="format" required="required">
+                <option value="json">Json</option>
+                <option value="html">Html</option>
+            </select>
             </td>
         </tr>
         <tr>
@@ -194,3 +207,4 @@ Send a GET request to <code class="endpoint">https://AWS Link/fitness/service/1s
 </form>
 </body>
 </html>
+<%--Calculation Fat, Protein and carbohydrates done--%>
