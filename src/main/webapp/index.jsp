@@ -119,8 +119,8 @@
                                                                 <div class="col-md-12">
                                                                     <label>Gender</label>
                                                                     <select name="gender" required="required" class="form-control">
-                                                                        <option value="male">Male</option>
-                                                                        <option value="female">Female</option>
+                                                                        <option value="male" style="color:grey;">Male</option>
+                                                                        <option value="female" style="color:grey;">Female</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
