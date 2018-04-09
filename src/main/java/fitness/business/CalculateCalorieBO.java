@@ -148,7 +148,16 @@ public class CalculateCalorieBO {
         list.add(calorie-1000);
 
         String outHTML = "";
+
+        outHTML += "<html>" ;
+        outHTML += "<head>" ;
+        outHTML += "<title>" + "Fat Protein Carbohydrates Result Page" + "</title>";
+        outHTML += "</head>" ;
+        outHTML += "<body>" ;
+        outHTML += "<p>" ;
+
         for(int i = 0 ; i< list.size() ; i++) {
+
             if(i==0) {
                 outHTML += "<h3>" + "Maintain weight" + "</h3>";
             } else if (i==1) {
@@ -202,7 +211,16 @@ public class CalculateCalorieBO {
             outHTML += "</tbody>";
             outHTML += "</table>";
         }
-
+        outHTML += "</p>" ;
+        outHTML += "<p>" ;
+        outHTML += "<a href=";
+        outHTML += "index.jsp";
+        outHTML += ">";
+        outHTML += "Back to HomePage";
+        outHTML += "</a>";
+        outHTML += "</p>" ;
+        outHTML += "</body>" ;
+        outHTML += "</html>" ;
         return outHTML;
     }
 }
