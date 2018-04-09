@@ -263,12 +263,12 @@
                                             <!--Put forms here-->
                                             <!--Calories Burned Form -->
                                             <div class="row form-group">
-                                                <h3>Calculate Calories Burned (Running)</h3>
+                                                <h3>Calculate Calories Burned by Activity</h3>
                                                 <p>
-                                                    Use this API to calculate how many calories are burning during a run based on 12 minute miles.
-                                                    Send a GET request to <code>https://AWS Link/fitness/service/ccr/json/weight/height/age/gender/activity</code>
+                                                    Use this API to calculate how many calories are burned during certain activities.
+                                                    Send a GET request to <code>https://AWS Link/fitness/service/cac/json/met/duration/weight</code>
                                                     OR
-                                                    <code>https://AWS Link/fitness/service/crc/html/distance/weight</code>.
+                                                    <code>https://AWS Link/fitness/service/cac/html/met/duration/weight</code>.
                                                 </p>
                                                 <div>
                                                     <form action="/calculateActivityCaloriesServlet" method="GET">
@@ -286,18 +286,18 @@
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">
                                                                     <label>Weight</label>
-                                                                    <input type="number" min="85" max="350" step="1" name="weight" id="weight" placeholder="pounds" class="number form-control" required="required"/>
+                                                                    <input type="number" min="85" max="350" step="1" name="weight" id="weight" placeholder="Pounds" class="number form-control" required="required"/>
                                                                 </div>
                                                             </div>
 															<div class="row form-group">
                                                                 <div class="col-md-12">
                                                                     <label>Duration</label>
-                                                                    <input type="number" min="1" max="120" step="1" name="duration" id="duration" placeholder="minutes"value="" class="number form-control" required="required"/>
+                                                                    <input type="number" min="1" max="120" step="1" name="duration" id="duration" placeholder="Minutes"value="" class="number form-control" required="required"/>
                                                                 </div>
                                                             </div>
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">
-                                                                    <label>Distance</label>
+                                                                    <label>Activity</label>
                                                                     <select id="met" name="met" required="required" class="form-control">
 																		<option value="4.0" style="color:blue;">Biking <10 mph leisure</option>
 																		<option value="6.0" style="color:blue;">Biking 10-11.9 mph light</option>
@@ -321,7 +321,7 @@
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">
                                                                     <label>&nbsp;</label>
-                                                                    <input type="submit" name="submit" value="Calculate BMR" class="btn btn-primary btn-block"/>
+                                                                    <input type="submit" name="submit" value="Calculate Calories Burned" class="btn btn-primary btn-block"/>
                                                                 </div>
                                                             </div>
                                                         </div>
