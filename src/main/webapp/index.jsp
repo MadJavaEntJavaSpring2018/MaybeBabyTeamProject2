@@ -91,8 +91,8 @@
                                                                 <div class="col-md-12">
                                                                     <label>Format</label>
                                                                     <select name="format" required="required" class="form-control">
-                                                                        <option value="json" style="color:blue;">Json</option>
-                                                                        <option value="html" style="color:blue;">Html</option>
+                                                                        <option value="json" style="color:grey;">Json</option>
+                                                                        <option value="html" style="color:grey;">Html</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -128,11 +128,11 @@
                                                                 <div class="col-md-12">
                                                                     <label>Activity</label>
                                                                     <select name="activity" required="required" class="form-control">
-                                                                        <option value="sedentary">Sedentary (little or no exercise)</option>
-                                                                        <option value="lightly">Lightly active (light exercise/sports 1-3 days/week)</option>
-                                                                        <option value="moderately">Moderately active (moderate exercise/sports 3-5 days/week)</option>
-                                                                        <option value="very">Very active (hard exercise/sports 6-7 days a week)</option>
-                                                                        <option value="extra">Extra active (very hard exercise/sports & physical job or 2x training)</option>
+                                                                        <option value="sedentary" style="color:grey;">Sedentary (little or no exercise)</option>
+                                                                        <option value="lightly" style="color:grey;">Lightly active (light exercise/sports 1-3 days/week)</option>
+                                                                        <option value="moderately" style="color:grey;">Moderately active (moderate exercise/sports 3-5 days/week)</option>
+                                                                        <option value="very" style="color:grey;">Very active (hard exercise/sports 6-7 days a week)</option>
+                                                                        <option value="extra" style="color:grey;">Extra active (very hard exercise/sports & physical job or 2x training)</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -140,8 +140,8 @@
                                                                 <div class="col-md-12">
                                                                     <label>Units</label>
                                                                     <select name="unit" required="required" class="form-control">
-                                                                        <option value="kg">KG</option>
-                                                                        <option value="lbs">LBS</option>
+                                                                        <option value="kg" style="color:grey;">KG</option>
+                                                                        <option value="lbs" style="color:grey;">LBS</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -189,8 +189,8 @@
                                                                 <div class="col-md-12">
                                                                     <label>Format</label>
                                                                     <select name="format" required="required" class="form-control">
-                                                                        <option value="json" style="color:blue;">Json</option>
-                                                                        <option value="html" style="color:blue;">Html</option>
+                                                                        <option value="json" style="color:grey;">Json</option>
+                                                                        <option value="html" style="color:grey;">Html</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -198,7 +198,7 @@
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">
                                                                     <label>Weight</label>
-                                                                    <input type="text" name="weight" id="weight" placeholder="Weight" required="required" class="form-control">
+                                                                    <input type="text" name="weight" id="weightCalorie" placeholder="Weight" required="required" class="form-control">
                                                                 </div>
                                                             </div>
                                                             <div class="row form-group">
@@ -225,11 +225,11 @@
                                                                 <div class="col-md-12">
                                                                     <label>Activity</label>
                                                                     <select name="activity" required="required" class="form-control">
-                                                                        <option value="sed">Sedentary - little or no exercise</option>
-                                                                        <option value="lht">Lightly Active - exercise/sports 1-3 times/week</option>
-                                                                        <option value="mod">Moderately Active - exercise/sports 3-5 times/week</option>
-                                                                        <option value="hrd">Very Active - hard exercise/sports 6-7 times a week)</option>
-                                                                        <option value="ext">Extra Active - very hard exercise/sports or physical job</option>
+                                                                        <option value="sed" style="color:grey;">Sedentary - little or no exercise</option>
+                                                                        <option value="lht" style="color:grey;">Lightly Active - exercise/sports 1-3 times/week</option>
+                                                                        <option value="mod" style="color:grey;">Moderately Active - exercise/sports 3-5 times/week</option>
+                                                                        <option value="hrd" style="color:grey;">Very Active - hard exercise/sports 6-7 times a week)</option>
+                                                                        <option value="ext" style="color:grey;">Extra Active - very hard exercise/sports or physical job</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -277,8 +277,8 @@
                                                                 <div class="col-md-12">
                                                                     <label>Format</label>
                                                                     <select name="format" required="required" class="form-control">
-                                                                        <option value="json" style="color:blue;">Json</option>
-                                                                        <option value="html" style="color:blue;">Html</option>
+                                                                        <option value="json" style="color:grey;">Json</option>
+                                                                        <option value="html" style="color:grey;">Html</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -299,22 +299,22 @@
                                                                 <div class="col-md-12">
                                                                     <label>Activity</label>
                                                                     <select id="met" name="met" required="required" class="form-control">
-																		<option value="4.0" style="color:blue;">Biking <10 mph leisure</option>
-																		<option value="6.0" style="color:blue;">Biking 10-11.9 mph light</option>
-																		<option value="8.0" style="color:blue;">Biking 12-13.9 mph moderate</option>
-																		<option value="10.0" style="color:blue;">Biking 14-15.9 mph fast</option>
-																		<option value="12.0" style="color:blue;">Biking 16.0-19.9 mph very fast</option>
-																		<option value="16.0" style="color:blue;">Biking >20 mph racing</option>
-																		<option value="8.0" style="color:blue;">Running 5 mph 12 minute miles</option>
-																		<option value="10.0" style="color:blue;">Running 6 mph 10 minute miles</option>
-																		<option value="11.5" style="color:blue;">Running 7 mph 8.5 minute miles</option>
-																		<option value="13.5" style="color:blue;">Running 8 mph 7.5 minute miles</option>
-																		<option value="15.0" style="color:blue;">Running 9 mph 6.5 minute miles</option>
-																		<option value="16.0" style="color:blue;">Running 10 mph 6.0 minute miles</option>
-																		<option value="2.5" style="color:blue;">Walking 2 mph slow</option>
-																		<option value="3.5" style="color:blue;">Walking 3 mph moderate</option>
-																		<option value="4.0" style="color:blue;">Walking 3.5-4 mph brisk</option>
-																		<option value="1.80" style="color:blue;">Homework</option>
+																		<option value="4.0" style="color:grey;">Biking <10 mph leisure</option>
+																		<option value="6.0" style="color:grey;">Biking 10-11.9 mph light</option>
+																		<option value="8.0" style="color:grey;">Biking 12-13.9 mph moderate</option>
+																		<option value="10.0" style="color:grey;">Biking 14-15.9 mph fast</option>
+																		<option value="12.0" style="color:grey;">Biking 16.0-19.9 mph very fast</option>
+																		<option value="16.0" style="color:grey;">Biking >20 mph racing</option>
+																		<option value="8.0" style="color:grey;">Running 5 mph 12 minute miles</option>
+																		<option value="10.0" style="color:grey;">Running 6 mph 10 minute miles</option>
+																		<option value="11.5" style="color:grey;">Running 7 mph 8.5 minute miles</option>
+																		<option value="13.5" style="color:grey;">Running 8 mph 7.5 minute miles</option>
+																		<option value="15.0" style="color:grey;">Running 9 mph 6.5 minute miles</option>
+																		<option value="16.0" style="color:grey;">Running 10 mph 6.0 minute miles</option>
+																		<option value="2.5" style="color:grey;">Walking 2 mph slow</option>
+																		<option value="3.5" style="color:grey;">Walking 3 mph moderate</option>
+																		<option value="4.0" style="color:grey;">Walking 3.5-4 mph brisk</option>
+																		<option value="1.80" style="color:grey;">Homework</option>
 																	</select>
                                                                 </div>
                                                             </div>
@@ -360,8 +360,8 @@
                                                                 <div class="col-md-12">
                                                                     <label>Format</label>
                                                                     <select name="format" required="required" class="form-control">
-                                                                        <option value="json" style="color:blue;">Json</option>
-                                                                        <option value="html" style="color:blue;">Html</option>
+                                                                        <option value="json" style="color:grey;">Json</option>
+                                                                        <option value="html" style="color:grey;">Html</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -420,8 +420,8 @@
                                                                 <div class="col-md-12">
                                                                     <label>Format</label>
                                                                     <select name="format" required="required" class="form-control">
-                                                                        <option value="json" style="color:blue;">Json</option>
-                                                                        <option value="html" style="color:blue;">Html</option>
+                                                                        <option value="json" style="color:grey;">Json</option>
+                                                                        <option value="html" style="color:grey;">Html</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
