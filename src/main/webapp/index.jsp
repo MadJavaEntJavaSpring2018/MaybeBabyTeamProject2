@@ -1,3 +1,4 @@
+
 <html>
 <head>
     <title>Fitness Service</title>
@@ -250,3 +251,83 @@ Send a GET request to <code class="endpoint">https://AWS Link/fitness/service/1s
           </tbody>
     </table>
 </form>
+
+<!--BMI Form (lbs) -->
+<div class="accordion-group">
+<h3>Calculate BMI (Imperial Units)</h3>
+<p>
+    Use this API to calculate Body Mass Index (BMI) based on weight in pounds and height in inches.
+    Send a GET request to <code>https://AWS Link/fitness/service/bmilbs</code>.
+</p>
+    <div>
+        <form action="http://localhost:8080/maybebaby/fitness/service/bmilbs" method="post">
+            <div>
+                <div>
+                    <div>
+                        <label>Format</label>
+                        <select name="format" required="required">
+                            <option value="json">Json</option>
+                            <option value="html">Html</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>Weight</label>
+                        <input type="text" name="weight" placeholder="Weight" required="required">
+                    </div>
+
+                    <div>
+                        <label>Height</label>
+                        <input type="text" name="height" placeholder="Height" required="required">
+                    </div>
+                    <div>
+                        <label>&nbsp;</label>
+                        <input type="submit" name="submit"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <h3>BMI (Imperial) Done</h3>
+</div>
+
+<!--BMI Form (kg) -->
+<div class="accordion-group">
+    <h3>Calculate BMI (Metric Units)</h3>
+    <p>
+        Use this API to calculate Body Mass Index (BMI) based on height in meters and weight in kilograms.
+        Send a GET request to <code>https://AWS Link/fitness/service/bmikg</code>.
+    </p>
+    <div>
+        <form action="fitness/service/bmikg" method="post">
+            <div>
+                <div>
+                    <div>
+                        <label>Format</label>
+                        <select name="format" required="required">
+                            <option value="json">Json</option>
+                            <option value="html">Html</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Weight</label>
+                        <input type="text" name="weight" placeholder="Weight" required="required">
+                    </div>
+                    <div>
+                        <label>Height</label>
+                        <input type="text" name="height" placeholder="Height" required="required">
+                    </div>
+                    <div>
+                        <label>Age</label>
+                        <input type="text" name="age" placeholder="Age" required="required">
+                    </div>
+                    <div>
+                        <label>&nbsp;</label>
+                        <input type="submit" name="submit"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <h3>BMI (Metric) Done</h3>
+</div>
