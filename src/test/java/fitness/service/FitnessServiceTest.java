@@ -51,28 +51,31 @@ public class FitnessServiceTest {
     }
 
     /**
-     * Test RunCaloriesBurned calculation.
+     * Calculate Activity Calories
      */
     @Test
-    void calculateRunCaloriesBurned() {
-        int caloriesBurned = fitnessService.calculateRunCalories(5,200);
-        assertEquals(756, caloriesBurned);
+    void calculateActivityCaloriesBurned() {
+        int caloriesBurned = fitnessService.calculateActivityCalories(5.0,30, 200);
+        assertEquals(227 , caloriesBurned);
     }
 
     /**
-     * Test RunCaloriesBurned json response.
+     * Calculate Activity Calories burned json response.
      */
     @Test
-    void calculateRunCaloriesBurnedJSON() {
-        Response respone = fitnessService.getJSONCaloriesBurned(5, 200) ;
-        assertEquals("{\"CaloriesBurned\":756}"
+    void calculateActivityCaloriesBurnedJSON() {
+        Response respone = fitnessService.getJSONCaloriesBurned (5.0,30, 200);
+        assertEquals("{\"CaloriesBurned\":227}"
                 , respone.getEntity().toString());
     }
 
+    /**
+     * Calculate Activity Calories burned html response.
+     */
     @Test
-    void calculateRunCaloriesBurnedHTML() {
-        Response response = fitnessService.getHTMLCaloriesBurned(5, 200);
-        assertEquals("<h3>Calories burned: 756</h3>"
+    void calculateActivityCaloriesBurnedHTML() {
+        Response response = fitnessService.getHTMLCaloriesBurned(5.0,30, 200);
+        assertEquals("<h3>Calories burned: 227</h3>"
                 , response.getEntity().toString());
     }
 
