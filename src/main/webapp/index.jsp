@@ -1,333 +1,491 @@
-
+<!DOCTYPE HTML>
 <html>
 <head>
-    <title>Fitness Service</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Maybe Baby</title>
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="css/icomoon.css">
+    <!-- Themify Icons-->
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <!-- Bootstrap DateTimePicker -->
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+
+    <!-- Owl Carousel  -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Modernizr JS -->
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 <body>
-<h2>Hello World! MaybeBabyTeamProject</h2>
 
-<!-- BMR calculation form -->
-<div class="accordion-group">
-    <h3>Calculate BMR</h3>
-    <div>
-        <form action="fitness/service/bmr" method="post">
-            <div>
-                <p>
-                    Use this API to calculate BMR (Basal Metabolic Rate)  is an estimate of how many calories you'd burn if you were to do nothing but rest for 24 hours.
-                    It represents the minimum amount of energy needed to keep your body functioning, including breathing and keeping your heart beating.
-                    Send a GET request to <code>https://AWS Link/fitness/service/bmr/weight/height/age/gender/activity</code>.
-                </p>
+<div class="gtco-loader"></div>
 
-                <div>
-                    <div>
-                        <label>Format</label>
-                        <select name="format" required="required">
-                            <option value="json">Json</option>
-                            <option value="html">Html</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label>Weight</label>
-                        <input type="text" name="weight" placeholder="Weight" required="required">
-                    </div>
-
-                    <div>
-                        <label>Height</label>
-                        <input type="text" name="height" placeholder="Height" required="required">
-                    </div>
-                    <div>
-                        <label>Age</label>
-                        <input type="text" name="age" placeholder="Age" required="required">
-                    </div>
-                    <div>
-                        <label>Gender</label>
-                        <select name="gender" required="required">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Activity</label>
-                        <select name="activity" required="required">
-                            <option value="sedentary">Sedentary (little or no exercise)</option>
-                            <option value="lightly">Lightly active (light exercise/sports 1-3 days/week)</option>
-                            <option value="moderately">Moderately active (moderate exercise/sports 3-5 days/week)</option>
-                            <option value="very">Very active (hard exercise/sports 6-7 days a week)</option>
-                            <option value="extra">Extra active (very hard exercise/sports & physical job or 2x training)</option>
-                        </select>
-                    </div>
+<div id="page">
 
 
-                    <div>
-                        <label>Units</label>
-                        <select name="unit" required="required">
-                            <option value="kg">KG</option>
-                            <option value="lbs">LBS</option>
-                        </select>
-                    </div>
+    <!-- <div class="page-inner"> -->
+    <nav class="gtco-nav" role="navigation">
+        <div class="gtco-container">
 
-                    <div>
-                        <label>&nbsp;</label>
-                        <input type="submit" name="submit"/>
-                    </div>
+            <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                    <div id="gtco-logo"><a href="index.jsp">fitness<em>.</em></a></div>
                 </div>
             </div>
-        </form>
+
+        </div>
+    </nav>
+
+    <div id="gtco-header" class="gtco-cover-md" role="banner">
+        <div class="overlay"></div>
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-0 text-left">
+                    <div class="row">
+                        <div class="col-md-10 mt-text animate-box" data-animate-effect="fadeInUp">
+                            <span class="intro-text-small">Fitness Calculations for an active lifestyle!</span>
+                            <h2 class="cursive-font">Browse for more info</h2>
+                        </div>
+                    </div>
+
+                    <!-- Block for form div BMR-->
+                    <div class="row gtco-cover gtco-cover-md">
+                        <div class="col-md-10 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
+                            <div class="form-wrap">
+                                <div class="tab">
+
+                                    <div class="tab-content">
+                                        <div class="tab-content-inner active" data-content="signup">
+                                            <!--Put forms here-->
+                                            <!--BMR Form -->
+                                            <div class="row form-group">
+                                                <h3>Calculate BMR</h3>
+                                                <p>
+                                                    Use this API to calculate BMR (Basal Metabolic Rate)  is an estimate of how many calories you'd burn if you were to do nothing but rest for 24 hours.
+                                                    It represents the minimum amount of energy needed to keep your body functioning, including breathing and keeping your heart beating.
+                                                    Send a GET request to <code>https://AWS Link/fitness/service/bmr/weight/height/age/gender/activity</code>.
+                                                </p>
+                                                <div>
+                                                    <form action="fitness/service/bmr" method="post">
+                                                        <div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Format</label>
+                                                                    <select name="format" required="required" class="form-control">
+                                                                        <option value="json" style="color:blue;">Json</option>
+                                                                        <option value="html" style="color:blue;">Html</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Weight</label>
+                                                                    <input type="text" name="weight" placeholder="Weight" required="required" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Height</label>
+                                                                    <input type="text" name="height" placeholder="Height" required="required" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Age</label>
+                                                                    <input type="text" name="age" placeholder="Age" required="required" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Gender</label>
+                                                                    <select name="gender" required="required" class="form-control">
+                                                                        <option value="male">Male</option>
+                                                                        <option value="female">Female</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Activity</label>
+                                                                    <select name="activity" required="required" class="form-control">
+                                                                        <option value="sedentary">Sedentary (little or no exercise)</option>
+                                                                        <option value="lightly">Lightly active (light exercise/sports 1-3 days/week)</option>
+                                                                        <option value="moderately">Moderately active (moderate exercise/sports 3-5 days/week)</option>
+                                                                        <option value="very">Very active (hard exercise/sports 6-7 days a week)</option>
+                                                                        <option value="extra">Extra active (very hard exercise/sports & physical job or 2x training)</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Units</label>
+                                                                    <select name="unit" required="required" class="form-control">
+                                                                        <option value="kg">KG</option>
+                                                                        <option value="lbs">LBS</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>&nbsp;</label>
+                                                                    <input type="submit" name="submit" value="Calculate BMR" class="btn btn-primary btn-block"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End block form div BMR-->
+
+                    <!-- Block for form div WeightLoss-->
+                    <div class="row gtco-cover gtco-cover-md">
+                        <div class="col-md-10 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
+                            <div class="form-wrap">
+                                <div class="tab">
+
+                                    <div class="tab-content">
+                                        <div class="tab-content-inner active" data-content="signup">
+                                            <!--Put forms here-->
+                                            <!--Weight Loss Form -->
+                                            <div class="row form-group">
+                                                <h3>Calculate Fat, Protein and Carbohydrates</h3>
+                                                <p>
+                                                    Use this API to calculate how much amount of Fat, Protein and Carbohydrates you needed per day to maintain weight / to lose 1 lb per week / to lose 2 lbs per week.
+                                                    Send a GET request to <code>https://AWS Link/fitness/service/ccr/json/weight/height/age/gender/activity</code>
+                                                    OR
+                                                    <code>https://AWS Link/fitness/service/ccr/html/weight/height/age/gender/activity</code>.
+                                                </p>
+                                                <div>
+                                                    <form action="/calculateCalorieServlet" name="calform" method="post">
+                                                        <div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Format</label>
+                                                                    <select name="format" required="required" class="form-control">
+                                                                        <option value="json" style="color:blue;">Json</option>
+                                                                        <option value="html" style="color:blue;">Html</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Weight</label>
+                                                                    <input type="text" name="weight" id="weight" placeholder="Weight" required="required" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Height</label>
+                                                                    <input type="text" name="height" id="height" placeholder="Height" required="required" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Age</label>
+                                                                    <input type="text" name="age" id="age" placeholder="Age" required="required" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label for="gender1">
+                                                                        <input type="radio" name="gender" id="gender1" value="m"> male</label> &nbsp;
+                                                                    <label for="gender2">
+                                                                        <input type="radio" name="gender" id="gender2" value="f"> female</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Activity</label>
+                                                                    <select name="activity" required="required" class="form-control">
+                                                                        <option value="sed">Sedentary - little or no exercise</option>
+                                                                        <option value="lht">Lightly Active - exercise/sports 1-3 times/week</option>
+                                                                        <option value="mod">Moderately Active - exercise/sports 3-5 times/week</option>
+                                                                        <option value="hrd">Very Active - hard exercise/sports 6-7 times a week)</option>
+                                                                        <option value="ext">Extra Active - very hard exercise/sports or physical job</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>&nbsp;</label>
+                                                                    <input type="submit" name="submit" value="Calculate BMR" class="btn btn-primary btn-block"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End block form div WeightLoss-->
+
+                    <!-- Block for form div CaloriesBurned-->
+                    <div class="row gtco-cover gtco-cover-md">
+                        <div class="col-md-10 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
+                            <div class="form-wrap">
+                                <div class="tab">
+
+                                    <div class="tab-content">
+                                        <div class="tab-content-inner active" data-content="signup">
+                                            <!--Put forms here-->
+                                            <!--Calories Burned Form -->
+                                            <div class="row form-group">
+                                                <h3>Calculate Calories Burned (Running)</h3>
+                                                <p>
+                                                    Use this API to calculate how many calories are burning during a run based on 12 minute miles.
+                                                    Send a GET request to <code>https://AWS Link/fitness/service/ccr/json/weight/height/age/gender/activity</code>
+                                                    OR
+                                                    <code>https://AWS Link/fitness/service/crc/html/distance/weight</code>.
+                                                </p>
+                                                <div>
+                                                    <form action="/calculateRunCalorieServlet" method="GET">
+                                                        <div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Format</label>
+                                                                    <select name="format" required="required" class="form-control">
+                                                                        <option value="json" style="color:blue;">Json</option>
+                                                                        <option value="html" style="color:blue;">Html</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Weight</label>
+                                                                    <input type="text" name="weight" placeholder="pounds" id="caloriesburnedweight" required="required" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Distance</label>
+                                                                    <input type="text" name="distance" placeholder="miles" id="caloriesburneddistance" required="required" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>&nbsp;</label>
+                                                                    <input type="submit" name="submit" value="Calculate BMR" class="btn btn-primary btn-block"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End block form div CaloriesBurned-->
+
+                    <!-- Block for form div BMI Lbs-->
+                    <div class="row gtco-cover gtco-cover-md">
+                        <div class="col-md-10 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
+                            <div class="form-wrap">
+                                <div class="tab">
+
+                                    <div class="tab-content">
+                                        <div class="tab-content-inner active" data-content="signup">
+                                            <!--Put forms here-->
+                                            <!--BMI Form (lbs) -->
+                                            <div class="row form-group">
+                                                <h3>Calculate BMI (Imperial Units)</h3>
+                                                <p>
+                                                    Use this API to calculate Body Mass Index (BMI) based on weight in pounds and height in inches.
+                                                    Send a GET request to <code>https://AWS Link/fitness/service/bmilbs</code>.
+                                                </p>
+                                                <div>
+                                                    <form action="http://18.222.105.50:8080/MaybeBabyTeamProject//fitness/service/bmilbs" method="post">
+                                                        <div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Format</label>
+                                                                    <select name="format" required="required" class="form-control">
+                                                                        <option value="json" style="color:blue;">Json</option>
+                                                                        <option value="html" style="color:blue;">Html</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Weight</label>
+                                                                    <input type="text" name="weight" placeholder="Weight" required="required" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Height</label>
+                                                                    <input type="text" name="height" placeholder="Height" required="required" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>&nbsp;</label>
+                                                                    <input type="submit" name="submit" value="Calculate BMI" class="btn btn-primary btn-block"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End block form div BMI Lbs-->
+
+                    <!-- Block for form div BMI Kg-->
+                    <div class="row gtco-cover gtco-cover-md">
+                        <div class="col-md-10 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
+                            <div class="form-wrap">
+                                <div class="tab">
+
+                                    <div class="tab-content">
+                                        <div class="tab-content-inner active" data-content="signup">
+                                            <!--Put forms here-->
+                                            <!--BMI Form (Kg) -->
+                                            <div class="row form-group">
+                                                <h3>Calculate BMI (Metric Units)</h3>
+                                                <p>
+                                                    Use this API to calculate Body Mass Index (BMI) based on weight in kilograms and height in meters.
+                                                    Send a GET request to <code>https://AWS Link/fitness/service/bmikg</code>.
+                                                </p>
+                                                <div>
+                                                    <form action="http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/bmikg" method="post">
+                                                        <div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Format</label>
+                                                                    <select name="format" required="required" class="form-control">
+                                                                        <option value="json" style="color:blue;">Json</option>
+                                                                        <option value="html" style="color:blue;">Html</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Weight</label>
+                                                                    <input type="text" name="weight" placeholder="Weight" required="required" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>Height</label>
+                                                                    <input type="text" name="height" placeholder="Height" required="required" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label>&nbsp;</label>
+                                                                    <input type="submit" name="submit" value="Calculate BMI" class="btn btn-primary btn-block"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End block form div BMI Kg-->
+
+                </div>
+            </div>
+        </div>
     </div>
-    <h3>BMR Done</h3>
-</div>
-<!--
-<div class="accordion-group">
 
-<div id="distance" class="accordion-body in collapse" style="height: auto;">
-<form method="get" action="TODO ****">
-<div class="accordion-inner">
-<p>
-Use this API to determine the distance between two zip codes.
-Send a GET request to <code class="endpoint">https://AWS Link/fitness/service/1st param/2nd param/3rd param/4th param/5th param</code>.
-</p>
+    <footer id="gtco-footer" role="contentinfo" style="background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="gtco-container">
+            <div class="row row-pb-md">
 
-<div class="row">
-<div class="span1">
-<label>Format</label>
-<select class="input-mini" name="format" required="required">
-<option value="json">json</option>
-<option value="xml">html</option>
-</select>
+                <div class="col-md-12 text-center copyright">
+                    <p><small class="block">&copy; 2018 Team Maybe Baby</small>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </footer>
+    <!-- </div> -->
+
 </div>
 
-<div class="span2">
-<label>Zip Code 1</label>
-<input class="input-mini" type="text" name="zip_code1" placeholder="Zip Code" required="required">
-</div>
 
-<div class="span2">
-<label>Zip Code 2</label>
-<input class="input-mini" type="text" name="zip_code2" placeholder="Zip Code" required="required">
-</div>
+<!-- jQuery -->
+<script src="js/jquery.min.js"></script>
+<!-- jQuery Easing -->
+<script src="js/jquery.easing.1.3.js"></script>
+<!-- Bootstrap -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="js/jquery.waypoints.min.js"></script>
+<!-- Carousel -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- countTo -->
+<script src="js/jquery.countTo.js"></script>
 
-<div class="span1">
-<label>Units</label>
-<select class="input-mini" name="units" required="required">
-<option value="km">kg</option>
-<option value="mile">lbs</option>
-</select>
-</div>
+<!-- Stellar Parallax -->
+<script src="js/jquery.stellar.min.js"></script>
 
-<div class="span2 offset1">
-<label>&nbsp;</label>
-<button class="btn" type="submit">Make Request</button>
-</div>
-</div>
+<!-- Magnific Popup -->
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/magnific-popup-options.js"></script>
 
-<div class="request-url" style="margin: 5px 0px;">
-<span class="label">Request URL</span>
-<code>https://www.zipcodeapi.com/rest/W6Xx087DjLfGWvBgfkaP3G612cGXDccl9B4b37SFVs0YOj2ooZp4wDEfdnUO0UMN/distance.json/53704/53714/mile</code>
-</div>
-</div>
-</form>
-</div>
-</div>-->
+<script src="js/moment.min.js"></script>
+<script src="js/bootstrap-datetimepicker.min.js"></script>
 
-<h3>Calculate Fat, Protein and Carbohydrates</h3>
-<p>
-    Use this API to calculate how much amount of Fat, Protein and Carbohydrates you needed per day to maintain weight / to lose 1 lb per week / to lose 2 lbs per week.
-    Send a GET request to <code>https://AWS Link/fitness/service/ccr/json/weight/height/age/gender/activity</code>
-                                                            OR
-                          <code>https://AWS Link/fitness/service/ccr/html/weight/height/age/gender/activity</code>.
-</p>
 
-<form action="/calculateCalorieServlet" name="calform" method="post">
-    <table id="calinputtable" width="420">
-        <tbody>
-        <tr>
-            <td width="50">Age</td>
-            <td width="370">
-                <input type="text" name="age" id="age" value="" class="innormal" required="required">
-            </td>
-        </tr>
-        <tr>
-            <td>Gender</td>
-            <td>
-                <label for="gender1">
-                    <input type="radio" name="gender" id="gender1" value="m"> male</label> &nbsp;
-                <label for="gender2">
-                    <input type="radio" name="gender" id="gender2" value="f"> female</label>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <table width="420" id="standardheightweight" style="display: block;">
-        <tbody>
-        <tr>
-            <td width="50">Height</td>
-            <td width="370">
-                <input type="text" name="height" id="height" value="" class="in4char" required="required"> cms
-            </td>
-        </tr>
-        <tr>
-            <td>Weight</td>
-            <td>
-                <input type="text" name="weight" id="weight" value="" class="innormal" required="required"> kg
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <table width="500">
-        <tbody>
-        <tr>
-            <td width="50">Activity</td>
-            <td width="450">
-                <select id="activity" name="activity" required="required">
-                    <option value="sed">Sedentary - little or no exercise</option>
-                    <option value="lht">Lightly Active - exercise/sports 1-3 times/week</option>
-                    <option value="mod">Moderatetely Active - exercise/sports 3-5 times/week</option>
-                    <option value="hrd">Very Active - hard exercise/sports 6-7 times/week</option>
-                    <option value="ext">Extra Active - very hard exercise/sports or physical job</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td width="50">Format</td>
-            <td width="450">
-            <select name="format" required="required">
-                <option value="json">Json</option>
-                <option value="html">Html</option>
-            </select>
-            </td>
-        </tr>
-        <tr>
-            <td width="50">&nbsp;</td>
-            <td width="450">
-                <input type="submit" value="submit">
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</form>
+<!-- Main -->
+<script src="js/main.js"></script>
+
 </body>
 </html>
-<%--Calculation Fat, Protein and carbohydrates done--%>
 
-<h3>Calculate Calories Burned (Running)</h3>
-<p>
-    Use this API to calculate how many calories are burning during a run based on 12 minute miles.
-    Send a GET request to <code>https://AWS Link/fitness/service/ccr/json/weight/height/age/gender/activity</code>
-    OR
-    <code>https://AWS Link/fitness/service/crc/html/distance/weight</code>.
-</p>
-<form action="/calculateRunCalorieServlet" method="GET">
-
-    <table width="420" id="caloriesburnedinput" style="display: block;">
-        <tbody>
-        <tr>
-            <td>Distance</td>
-            <td>
-                <input type="text" name="distance" id="caloriesburneddistance"  placeholder="miles" required="required">
-            </td>
-        </tr>
-        <tr>
-            <td>Weight</td>
-            <td>
-                <input type="text" name="weight" id="caloriesburnedweight"  placeholder="pounds" required="required">
-            </td>
-        </tr>
-        <tr>
-            <td width="50">Format</td>
-            <td width="450">
-                <select name="format" required="required">
-                    <option value="json">Json</option>
-                    <option value="html">Html</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td width="50">&nbsp;</td>
-            <td width="450">
-                <input type="submit" value="submit">
-            </td>
-        </tr>
-          </tbody>
-    </table>
-</form>
-
-<!--BMI Form (lbs) -->
-<div class="accordion-group">
-<h3>Calculate BMI (Imperial Units)</h3>
-<p>
-    Use this API to calculate Body Mass Index (BMI) based on weight in pounds and height in inches.
-    Send a GET request to <code>https://AWS Link/fitness/service/bmilbs</code>.
-</p>
-    <div>
-        <form action="http://localhost:8080/maybebaby/fitness/service/bmilbs" method="post">
-            <div>
-                <div>
-                    <div>
-                        <label>Format</label>
-                        <select name="format" required="required">
-                            <option value="json">Json</option>
-                            <option value="html">Html</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label>Weight</label>
-                        <input type="text" name="weight" placeholder="Weight" required="required">
-                    </div>
-
-                    <div>
-                        <label>Height</label>
-                        <input type="text" name="height" placeholder="Height" required="required">
-                    </div>
-                    <div>
-                        <label>&nbsp;</label>
-                        <input type="submit" name="submit"/>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-    <h3>BMI (Imperial) Done</h3>
-</div>
-
-<!--BMI Form (kg) -->
-<div class="accordion-group">
-    <h3>Calculate BMI (Metric Units)</h3>
-    <p>
-        Use this API to calculate Body Mass Index (BMI) based on height in meters and weight in kilograms.
-        Send a GET request to <code>https://AWS Link/fitness/service/bmikg</code>.
-    </p>
-    <div>
-        <form action="fitness/service/bmikg" method="post">
-            <div>
-                <div>
-                    <div>
-                        <label>Format</label>
-                        <select name="format" required="required">
-                            <option value="json">Json</option>
-                            <option value="html">Html</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Weight</label>
-                        <input type="text" name="weight" placeholder="Weight" required="required">
-                    </div>
-                    <div>
-                        <label>Height</label>
-                        <input type="text" name="height" placeholder="Height" required="required">
-                    </div>
-                    <div>
-                        <label>Age</label>
-                        <input type="text" name="age" placeholder="Age" required="required">
-                    </div>
-                    <div>
-                        <label>&nbsp;</label>
-                        <input type="submit" name="submit"/>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-    <h3>BMI (Metric) Done</h3>
-</div>

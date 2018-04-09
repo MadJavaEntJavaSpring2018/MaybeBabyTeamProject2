@@ -452,13 +452,14 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .gtco-cover {
-  height: 900px;
+  height: auto;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
   float: left;
   width: 100%;
+  margin: 20px;
 }
 .gtco-cover a {
   color: #FBB448;
@@ -486,7 +487,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 .gtco-cover .display-t,
 .gtco-cover .display-tc {
-  height: 900px;
+  height: auto;
   display: table;
   width: 100%;
 }
