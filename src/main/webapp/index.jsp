@@ -354,7 +354,7 @@
                                                     Send a GET request to <code>https://AWS Link/fitness/service/bmilbs</code>.
                                                 </p>
                                                 <div>
-                                                    <form action="http://18.222.105.50:8080/MaybeBabyTeamProject//fitness/service/bmilbs" method="post">
+                                                    <form action="/MaybeBabyTeamProject/fitness/service/bmilbs" method="post">
                                                         <div>
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">
@@ -414,7 +414,7 @@
                                                     Send a GET request to <code>https://AWS Link/fitness/service/bmikg</code>.
                                                 </p>
                                                 <div>
-                                                    <form action="/fitness/service/bmikg" method="post">
+                                                    <form action="/MaybeBabyTeamProject/fitness/service/bmikg" method="post">
                                                         <div>
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">
