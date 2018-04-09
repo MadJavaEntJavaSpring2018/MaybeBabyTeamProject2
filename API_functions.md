@@ -3,7 +3,7 @@
 * <b>Calculate BMI.</b><br>
 <b>Input:</b> Weight/Height <br>
 <b>Output:</b> BMI. <br>
-<b>Format type: </b> Supporting 1) currently.
+<b>Format type: </b> Supporting hmtl and JSON currently.
 
 * <b>Calculate BMR.</b> <br>
 <b>Input:</b> Weight/Height/Age/Gender/Activity/Unit <br>

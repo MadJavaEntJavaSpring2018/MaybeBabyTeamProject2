@@ -9,4 +9,11 @@
 * Document application flow in text and pictures.
 
 **Week 2:**
-* 
+* Create Service classes, business logic class, servlets
+* Create index jsp forms
+* Functionality testing
+
+**Week 3:**
+* Refine java classes
+* jsp beautify, form integration with css
+* amazon deployment

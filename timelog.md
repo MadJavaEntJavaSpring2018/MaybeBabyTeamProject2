@@ -5,6 +5,7 @@
 |     3/29/2018  |     3   |   Osamah Shareef   |   Created the Application and Service classes, added POM dependencies, and created a method to calculate the BMR  |
 |     4/2/2018  |     1   |   Jerel Adams   |    Added calculateCaloriesBurned method  |
 |     4/2/2018  |     1   |   Rashid Malik   |    Added functionality to calculate Fat, Protein and carbohydrates  |
+|     4/3/2018  |     2   |   Justin Laabs   | Added my BMI methods |
 |     4/4/2018  |     4   |   Osamah Shareef   |    Added BMR controller, result JSP, and input form.  |
 |     4/4/2018  |     3   |   Rashid Malik   |    Added controller and Result jsp for Fat, Protein and Carbohydrates daily consumption |
 |     4/5/2018  |     2  |   Jerel Adams   |    Researched how to return JSON and HTML  |
@@ -15,3 +16,5 @@
 |     4/8/2018  |     2   |   Rashid Malik   |    Added unit tests and updated time log, added description to problem solution and web service functions |
 |     4/8/2018  |     3  |   Jerel Adams   |    Setup initial servlet, jsps and tests for calories burned |
 |     4/9/2018  |     3  |   Jerel Adams   |    Added additional activities for calories burned and finalized service,servlet,jsps and tests. |
+|     4/9/2018  |     4   |   Justin Laabs   | Added my forms, integrated everyone's forms with css reference |
+|     4/9/2018  |     2   |   Justin Laabs   | Deployed to AWS, tested for output |
