@@ -216,20 +216,43 @@ Send a GET request to <code class="endpoint">https://AWS Link/fitness/service/1s
     OR
     <code>https://AWS Link/fitness/service/crc/html/distance/weight</code>.
 </p>
-<form action="/calculateRunCalorieServlet" method="GET">
+<form action="/calculateActivityCaloriesServlet" method="GET">
 
-    <table width="420" id="caloriesburnedinput" style="display: block;">
+    <table width="420" id="activityInput" style="display: block;">
         <tbody>
         <tr>
-            <td>Distance</td>
+            <td width="50">Activity</td>
+            <td width="450">
+                <select id="met" name="met" required="required">
+                    <option value="4.0">Biking <10 mph leisure</option>
+                    <option value="6.0">Biking 10-11.9 mph light</option>
+                    <option value="8.0">Biking 12-13.9 mph moderate</option>
+                    <option value="10.0">Biking 14-15.9 mph fast</option>
+                    <option value="12.0">Biking 16.0-19.9 mph very fast</option>
+                    <option value="16.0">Biking >20 mph racing</option>
+                    <option value="8.0">Running 5 mph 12 minute miles</option>
+                    <option value="10.0">Running 6 mph 10 minute miles</option>
+                    <option value="11.5">Running 7 mph 8.5 minute miles</option>
+                    <option value="13.5">Running 8 mph 7.5 minute miles</option>
+                    <option value="15.0">Running 9 mph 6.5 minute miles</option>
+                    <option value="16.0">Running 10 mph 6.0 minute miles</option>
+                    <option value="2.5">Walking 2 mph slow</option>
+                    <option value="3.5">Walking 3 mph moderate</option>
+                    <option value="4.0">Walking 3.5-4 mph brisk</option>
+                    <option value="1.80 ">Homework</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Duration</td>
             <td>
-                <input type="text" name="distance" id="caloriesburneddistance"  placeholder="miles" required="required">
+                <input type="number" min="1" max="120" step="1" name="duration" id="duration" value="" class="number" required="required"/> minutes
             </td>
         </tr>
         <tr>
             <td>Weight</td>
             <td>
-                <input type="text" name="weight" id="caloriesburnedweight"  placeholder="pounds" required="required">
+                <input type="number" min="85" max="350" step="1" name="weight" id="weight" value="" class="number" required="required"/> pounds
             </td>
         </tr>
         <tr>

@@ -6,7 +6,7 @@ All that is needed is to pass the needed parameters, and FitnessCalc will return
 * Calculate BMI.
 * Calculate BMR.
 * Calculate amount of Fat, Protein and Carbohydrates required per day.
-* Calculate calories burned during a run.
+* Calculate Calories Burned during selected activity.
 
 **Project Technologies/Techniques**
 

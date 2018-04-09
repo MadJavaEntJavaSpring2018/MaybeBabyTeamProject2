@@ -164,22 +164,24 @@ public class FitnessService {
     }
 
     /**
-     * Calculate calories burned during a run json response.
+     * Calculate calories burned during an activity json response.
      *
-     * @param distance the distance
-     * @param weight   the weight
-     * @return Calories - The calories burned during a run
+     * @param met the metabolic equivalent of task
+     * @param duration the duration in minutes
+     * @param weight   the weight in pounds
+     * @return Calories - The calories burned during an activity
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/crc/json/{distance}/{weight}")
+    @Path("/cac/json/{met}/{duration}/{weight}")
     public Response getJSONCaloriesBurned(
-            @PathParam("distance") double distance,
+            @PathParam("met") double met,
+            @PathParam("duration") int duration,
             @PathParam("weight") int weight) {
 
         int calories;
 
-        calories = calculateRunCalories(distance,weight);
+        calories = calculateActivityCalories(met,duration,weight);
 
         {
             JSONObject json = new JSONObject();
@@ -189,24 +191,26 @@ public class FitnessService {
     }
 
     /**
-     * Calculate calories burned during a run html response.
+     * Calculate calories burned during an activity html response.
      *
-     * @param distance the distance
-     * @param weight   the weight
-     * @return Calories - The calories burned during a run
+     * @param met the metabolic equivalent of task
+     * @param duration the duration in minutes
+     * @param weight   the weight in pounds
+     * @return Calories - The calories burned during an activity
      */
     @GET
     @Produces(MediaType.TEXT_HTML)
-    @Path("/crc/html/{distance}/{weight}")
+    @Path("/cac/html/{met}/{duration}/{weight}")
     public Response getHTMLCaloriesBurned(
-            @PathParam("distance") double distance,
+            @PathParam("met") double met,
+            @PathParam("duration") int duration,
             @PathParam("weight") int weight) {
 
         int calories;
 
         String outHTML;
 
-        calories = calculateRunCalories(distance,weight);
+        calories = calculateActivityCalories(met,duration,weight);
 
         {
             outHTML =  "<h3>" + "Calories burned: " + calories + "</h3>";
@@ -216,14 +220,19 @@ public class FitnessService {
     }
 
     /**
-     * Calculate calories burned during a run based on an average of 12 minute miles.
+     * Calculate calories burned during based selected activity.
      *
-     * @param distance distance in miles
-     * @param weight weight in lbs
-     * @return Calories Burned - Calories Burned during a run.
+     * @param met the metabolic equivalent of task
+     * @param duration the duration in minutes
+     * @param weight   the weight in pounds
+     * @return Calories - The calories burned during an activity
      */
-    protected int calculateRunCalories (double distance, double weight){
-        return (int)((distance * 1.60934) * (weight * 0.453592) * 1.036);
+    protected int calculateActivityCalories (double met, int duration, int weight){
+
+        double poundsToKilogram = weight / 2.2;
+        double minutesToHours = (duration / 60.0);
+
+        return (int)((poundsToKilogram * met) * minutesToHours);
     }
 
     /**

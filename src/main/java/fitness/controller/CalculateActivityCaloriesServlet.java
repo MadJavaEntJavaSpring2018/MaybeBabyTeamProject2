@@ -13,10 +13,10 @@ import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 
 @WebServlet(
-        name = "calculateRunCalorieServlet",
-        urlPatterns = {"/calculateRunCalorieServlet"}
+        name = "calculateActivityCaloriesServlet",
+        urlPatterns = {"/calculateActivityCaloriesServlet"}
 )
-public class CalculateRunCalorieServlet extends HttpServlet {
+public class CalculateActivityCaloriesServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,7 +30,8 @@ public class CalculateRunCalorieServlet extends HttpServlet {
 
         response.setContentType("text/html");
 
-        double distance = Double.valueOf(request.getParameter("distance"));
+        double met = Double.valueOf(request.getParameter("met"));
+        int duration = Integer.valueOf(request.getParameter("duration"));
         int weight = Integer.valueOf(request.getParameter("weight"));
         String format = request.getParameter("format");
 
@@ -39,18 +40,18 @@ public class CalculateRunCalorieServlet extends HttpServlet {
         Client client = ClientBuilder.newClient();
         if (format.equals("json")) {
             WebTarget target =
-                    client.target("http://localhost:8080/fitness/service/crc/json/" +
-                            distance + "/" + weight);
+                    client.target("http://localhost:8080/fitness/service/cac/json/" +
+                            met + "/" + duration + "/" + weight);
             output = target.request(MediaType.APPLICATION_JSON).get(String.class);
         } else if (format.equals("html")) {
             WebTarget target =
-                    client.target("http://localhost:8080/fitness/service/crc/html/" +
-                            distance + "/" + weight);
+                    client.target("http://localhost:8080/fitness/service/cac/html/" +
+                            met + "/" + duration + "/" + weight);
             output = target.request(MediaType.TEXT_HTML).get(String.class);
         }
 
         try {
-            String url = "/resultRunning.jsp";
+            String url = "/resultActivity.jsp";
             request.setAttribute("calories", output);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
