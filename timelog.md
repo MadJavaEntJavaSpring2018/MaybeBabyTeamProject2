@@ -19,3 +19,4 @@
 |     4/9/2018  |     4   |   Justin Laabs   | Added my forms, integrated everyone's forms with css reference |
 |     4/9/2018  |     2   |   Justin Laabs   | Deployed to AWS, tested for output |
 |     4/9/2018  |     1   |   Osamah Shareef   | Modified the BMR HTML output |
+|     4/10/2018  |     2   |   Jerel Adams   | Updated service to return POST and GET responses. Removed unused jsp and servlet. |
