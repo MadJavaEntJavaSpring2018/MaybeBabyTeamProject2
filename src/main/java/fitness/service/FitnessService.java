@@ -341,8 +341,8 @@ public class FitnessService {
             json.put("BMI", df.format(bmi));
             return json.toString();
         } else {
-            String html = "<h3>BMI (Metric)</h3><p>The BMI for a person with a height of " + height +
-                    " meters and a weight of " + weight + " kilograms is : " + df.format(bmi) + "</p>";
+            String html = "<h3>BMI</h3><p>The BMI for a person with a height of " + height +
+                    " and a weight of " + weight + " is : " + df.format(bmi) + "</p>";
             return html;
         }
     }
