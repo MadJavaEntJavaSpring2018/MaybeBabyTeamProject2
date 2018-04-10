@@ -352,7 +352,7 @@
                                                     Send a GET request to <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/get/bmilbs</code>
                                                 </p>
                                                 <div>
-                                                    <form action="/MaybeBabyTeamProject/fitness/service/bmilbs" method="post">
+                                                    <form action="fitness/service/bmilbs" method="post">
                                                         <div>
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">
@@ -412,7 +412,7 @@
                                                     Send a GET request to <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/get/bmikg</code>
                                                 </p>
                                                 <div>
-                                                    <form action="/MaybeBabyTeamProject/fitness/service/bmikg" method="post">
+                                                    <form action="fitness/service/bmikg" method="post">
                                                         <div>
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">
