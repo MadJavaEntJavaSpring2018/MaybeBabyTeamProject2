@@ -82,7 +82,7 @@
                                                 <p>
                                                     Use this API to calculate BMR (Basal Metabolic Rate)  is an estimate of how many calories you'd burn if you were to do nothing but rest for 24 hours.
                                                     It represents the minimum amount of energy needed to keep your body functioning, including breathing and keeping your heart beating.
-                                                    Send a GET request to <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/bmr/weight/height/age/gender/activity</code>
+                                                    Send a GET request to <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/bmr</code>
                                                 </p>
                                                 <div>
                                                     <form action="fitness/service/bmr" method="post">
