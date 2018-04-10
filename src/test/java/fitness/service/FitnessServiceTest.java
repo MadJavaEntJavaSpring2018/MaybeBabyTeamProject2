@@ -98,7 +98,7 @@ public class FitnessServiceTest {
     }
 
     /**
-     * Verifies BMR's Imperial calculations with JSON output.
+     * Verifies BMI's Imperial calculations with JSON output.
      */
     @Test
     void testBMIcalculationsImperial() {
@@ -107,7 +107,7 @@ public class FitnessServiceTest {
     }
 
     /**
-     * Verifies BMR's Metric calculations with JSON output.
+     * Verifies BMI's Metric calculations with JSON output.
      */
     @Test
     void testBMIcalculationsMetric() {
@@ -116,7 +116,7 @@ public class FitnessServiceTest {
     }
 
     /**
-     * Verifies BMR's Imperial calculations with JSON output.
+     * Verifies BMI's Imperial calculations with JSON output for a GET.
      */
     @Test
     void testBMIGetCalculationsImperial() {
@@ -125,7 +125,7 @@ public class FitnessServiceTest {
     }
 
     /**
-     * Verifies BMR's Metric calculations with JSON output.
+     * Verifies BMI's Metric calculations with JSON output for a GET.
      */
     @Test
     void testBMIGetCalculationsMetric() {
@@ -134,7 +134,7 @@ public class FitnessServiceTest {
     }
 
     /**
-     * Verifies BMR's Metric calculations with JSON output.
+     * Verifies BMI's Metric calculations with html output.
      */
     @Test
     void testBMIGetCalculationsMetricHtml() {
