@@ -266,12 +266,10 @@
                                                 <h3>Calculate Calories Burned by Activity</h3>
                                                 <p>
                                                     Use this API to calculate how many calories are burned during certain activities.
-                                                    Send a GET request to <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/cac/json/met/duration/weight</code>
-                                                    OR
-                                                    <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/cac/html/met/duration/weight</code>
+                                                    Send a GET request to <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/get/cac/</code>
                                                 </p>
                                                 <div>
-                                                    <form action="/calculateActivityCaloriesServlet" method="GET">
+                                                    <form action="fitness/service/cac"  method="post">
                                                         <div>
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">

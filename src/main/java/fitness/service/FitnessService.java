@@ -165,75 +165,101 @@ public class FitnessService {
     }
 
     /**
-     * Calculate calories burned during an activity json response.
+     * Calculate calories burned during an activity (GET).
      *
      * @param met the metabolic equivalent of task
      * @param duration the duration in minutes
      * @param weight   the weight in pounds
-     * @return Calories - The calories burned during an activity
+     *
+     * @return the response
      */
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/cac/json/{met}/{duration}/{weight}")
-    public Response getJSONCaloriesBurned(
-            @PathParam("met") double met,
-            @PathParam("duration") int duration,
-            @PathParam("weight") int weight) {
+    @Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_HTML})
+    @Path("/get/cac")
+    public Response calculateGetActivityCaloriesBurned(
+            @QueryParam("format") String format,
+            @QueryParam("met") double met,
+            @QueryParam("duration") int duration,
+            @QueryParam("weight") int weight) {
 
-        int calories;
-
-        calories = calculateActivityCalories(met,duration,weight);
+        //Get the activity calories burned
+        int calories = calculateActivityCaloriesBurned(met,duration,weight);
 
         {
-            JSONObject json = new JSONObject();
-            json.put("CaloriesBurned", calories);
-            return Response.status(200).entity(json.toString()).build();
+            String output = buildCaloriesBurnedString(format, calories);
+            return Response.status(200).entity(output).build();
         }
     }
 
     /**
-     * Calculate calories burned during an activity html response.
+     * Calculate calories burned during an activity (POST).
+     *
+     * @author Jerel Adams
      *
      * @param met the metabolic equivalent of task
      * @param duration the duration in minutes
      * @param weight   the weight in pounds
-     * @return Calories - The calories burned during an activity
+     *
+     * @return the response
      */
-    @GET
-    @Produces(MediaType.TEXT_HTML)
-    @Path("/cac/html/{met}/{duration}/{weight}")
-    public Response getHTMLCaloriesBurned(
-            @PathParam("met") double met,
-            @PathParam("duration") int duration,
-            @PathParam("weight") int weight) {
+    @POST
+    @Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_HTML})
+    @Path("/cac")
+    public Response calculateActivityCaloriesBurned(
+            @FormParam("format") String format,
+            @FormParam("met") double met,
+            @FormParam("duration") int duration,
+            @FormParam("weight") int weight) {
 
-        int calories;
-
-        String outHTML;
-
-        calories = calculateActivityCalories(met,duration,weight);
+        //Get the activity calories burned
+        int calories = calculateActivityCaloriesBurned(met,duration,weight);
 
         {
-            outHTML =  "<h3>" + "Calories burned: " + calories + "</h3>";
-            return Response.status(200).entity(outHTML).build();
+            String output = buildCaloriesBurnedString(format, calories);
+            return Response.status(200).entity(output).build();
         }
 
     }
 
     /**
-     * Calculate calories burned during based selected activity.
+     * Calculate calories burned based on selected activity.
+     *
+     * @author Jerel Adams
      *
      * @param met the metabolic equivalent of task
      * @param duration the duration in minutes
      * @param weight   the weight in pounds
-     * @return Calories - The calories burned during an activity
+     *
+     * @return Calories - The activity calories burned
      */
-    protected int calculateActivityCalories (double met, int duration, int weight){
+    protected int calculateActivityCaloriesBurned (double met, int duration, int weight){
 
         double poundsToKilogram = weight / 2.2;
         double minutesToHours = (duration / 60.0);
 
         return (int)((poundsToKilogram * met) * minutesToHours);
+    }
+
+    /**
+     * Build calories burned response.
+     *
+     * @author Jerel Adams
+     *
+     * @param format type of output
+     * @param calories  calories burned
+     *
+     * @return formatted response
+     */
+    public String buildCaloriesBurnedString(String format, int calories) {
+        if (format.equals("json")) {
+            JSONObject json = new JSONObject();
+            json.put("CaloriesBurned", calories);
+            return json.toString();
+        } else {
+            String html = "<h3>" + "Calories burned: " + calories + "</h3>";
+
+            return html;
+        }
     }
 
     /**

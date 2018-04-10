@@ -73,7 +73,7 @@ public class FitnessServiceTest {
      */
     @Test
     void calculateActivityCaloriesBurned() {
-        int caloriesBurned = fitnessService.calculateActivityCalories(5.0,30, 200);
+        int caloriesBurned = fitnessService.calculateActivityCaloriesBurned(5.0,30, 200);
         assertEquals(227 , caloriesBurned);
     }
 
@@ -82,7 +82,7 @@ public class FitnessServiceTest {
      */
     @Test
     void calculateActivityCaloriesBurnedJSON() {
-        Response respone = fitnessService.getJSONCaloriesBurned (5.0,30, 200);
+        Response respone = fitnessService.calculateGetActivityCaloriesBurned ("json",5.0,30, 200) ;
         assertEquals("{\"CaloriesBurned\":227}"
                 , respone.getEntity().toString());
     }
@@ -92,7 +92,7 @@ public class FitnessServiceTest {
      */
     @Test
     void calculateActivityCaloriesBurnedHTML() {
-        Response response = fitnessService.getHTMLCaloriesBurned(5.0,30, 200);
+        Response response = fitnessService.calculateGetActivityCaloriesBurned("html",5.0,30, 200) ;
         assertEquals("<h3>Calories burned: 227</h3>"
                 , response.getEntity().toString());
     }
