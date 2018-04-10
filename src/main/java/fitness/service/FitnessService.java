@@ -46,7 +46,7 @@ public class FitnessService {
 
 
     @POST
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_HTML})
     @Path("/bmr")
     public Response getBMRcalculations(
             @FormParam("format") String format, @FormParam("weight") double weight,
@@ -59,8 +59,9 @@ public class FitnessService {
             json.put("BMR", calculateBMR(gender, weight, height, age, activity, unit));
             return Response.status(200).entity(json.toString() + " calories you need each day to maintain you weight.").build();
         } else {
-            String html = "BMR is " + calculateBMR(gender, weight, height, age, activity, unit);
-            return Response.status(200).entity(html + " calories you need each day to maintain you weight.").build();
+            String html = "<h3>BMR</h3><p>BMR is " + calculateBMR(gender, weight, height, age, activity, unit)
+                    + " calories you need each day to maintain you weight.</p>";
+            return Response.status(200).entity(html).build();
         }
     }
 

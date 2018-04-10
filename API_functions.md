@@ -8,7 +8,7 @@
 * <b>Calculate BMR.</b> <br>
 <b>Input:</b> Weight/Height/Age/Gender/Activity/Unit <br>
 <b>Output:</b> BMR. <br>
-<b>Format:</b> Supporting Json currently.
+<b>Format:</b> Supporting Json and HTML currently.
 
 * <b>Calculate amount of Fat, Protein and Carbohydrates required per day.</b><br>
 <b>Input:</b> Weight/Height/Age/Gender/Activity<br>

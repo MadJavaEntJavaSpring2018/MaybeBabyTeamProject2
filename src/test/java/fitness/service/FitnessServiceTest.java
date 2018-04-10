@@ -19,21 +19,39 @@ public class FitnessServiceTest {
     }
 
     /**
-     * Verifies BMR's Imperial calculations.
+     * Verifies BMR's Imperial calculations with JSON output.
      */
     @Test
-    void testBMRcalculationsImperial() {
+    void testBMRcalculationsImperialJSON() {
        Response bmr = fitnessService.getBMRcalculations("json",160,6,34,"male","very","lbs");
         assertEquals("{\"BMR\":1565.9550000000004} calories you need each day to maintain you weight.", bmr.getEntity());
     }
 
     /**
-     * Verifies BMR's Metric calculations.
+     * Verifies BMR's Imperial calculations with HTML output.
      */
     @Test
-    void testBMRcalculationsMetric() {
+    void testBMRcalculationsImperialHTML() {
+        Response bmr = fitnessService.getBMRcalculations("html",160,6,34,"male","very","lbs");
+        assertEquals("<h3>BMR</h3><p>BMR is 1565.9550000000004 calories you need each day to maintain you weight.</p>", bmr.getEntity());
+    }
+
+    /**
+     * Verifies BMR's Metric calculations with JSON output.
+     */
+    @Test
+    void testBMRcalculationsMetricJSON() {
         Response bmr = fitnessService.getBMRcalculations("json",85,178,34,"male","very","kg");
         assertEquals("{\"BMR\":3270.79665} calories you need each day to maintain you weight.", bmr.getEntity());
+    }
+
+    /**
+     * Verifies BMR's Metric calculations with JSON output.
+     */
+    @Test
+    void testBMRcalculationsMetricHTML() {
+        Response bmr = fitnessService.getBMRcalculations("html",85,178,34,"male","very","kg");
+        assertEquals("<h3>BMR</h3><p>BMR is 3270.79665 calories you need each day to maintain you weight.</p>", bmr.getEntity());
     }
 
     @Test

@@ -18,3 +18,4 @@
 |     4/9/2018  |     3  |   Jerel Adams   |    Added additional activities for calories burned and finalized service,servlet,jsps and tests. |
 |     4/9/2018  |     4   |   Justin Laabs   | Added my forms, integrated everyone's forms with css reference |
 |     4/9/2018  |     2   |   Justin Laabs   | Deployed to AWS, tested for output |
+|     4/9/2018  |     1   |   Osamah Shareef   | Modified the BMR HTML output |
