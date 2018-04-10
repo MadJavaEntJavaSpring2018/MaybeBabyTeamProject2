@@ -254,17 +254,8 @@ public class FitnessService {
             @FormParam("height") double height) {
         DecimalFormat df = new DecimalFormat("###.##");
         double bmi = (weight / Math.pow(height, 2)) * 703;
-        if (format.equals("json")) {
-            JSONObject json = new JSONObject();
-            json.put("Height", height);
-            json.put("Weight", weight);
-            json.put("BMI", df.format(bmi));
-            return Response.status(200).entity(json.toString()).build();
-        } else {
-            String html = "<h3>BMI (Imperial)</h3><p>The BMI for a person with a height of " + height +
-                    " inches and a weight of " + weight + " pounds is : " + df.format(bmi) + "</p>";
-            return Response.status(200).entity(html).build();
-        }
+        String output = makeBmiString(format, weight, height, bmi);
+        return Response.status(200).entity(output).build();
     }
 
     /**
@@ -283,19 +274,78 @@ public class FitnessService {
             @FormParam("format") String format,
             @FormParam("weight") double weight,
             @FormParam("height") double height) {
-        DecimalFormat df = new DecimalFormat("###.##");
         double bmi = weight / Math.pow(height, 2);
+        String output = makeBmiString(format, weight, height, bmi);
+        return Response.status(200).entity(output).build();
+    }
+
+    /**
+     * Calculate getbmilbs response.
+     *
+     * @author jlaabs
+     *
+     * @param weight weight in lbs
+     * @param height height in inches
+     *
+     * @return BMI - Body Mass Index
+     */
+    @GET
+    @Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_HTML})
+    @Path("/get/bmilbs")
+    public Response calculateGetBMIlbs(
+            @QueryParam("format") String format,
+            @QueryParam("weight") double weight,
+            @QueryParam("height") double height) {
+        double bmi = (weight / Math.pow(height, 2)) * 703;
+        String output = makeBmiString(format, weight, height, bmi);
+        return Response.status(200).entity(output).build();
+    }
+
+    /**
+     * Calculate getbmikg response.
+     *
+     * @author jlaabs
+     *
+     * @param weight weight in kg
+     * @param height height in meters
+     * @return BMI - Body Mass Index
+     */
+    @GET
+    @Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_HTML})
+    @Path("/get/bmikg")
+    public Response calculateGetBMIkg(
+            @QueryParam("format") String format,
+            @QueryParam("weight") double weight,
+            @QueryParam("height") double height) {
+        double bmi = weight / Math.pow(height, 2);
+        String output = makeBmiString(format, weight, height, bmi);
+        return Response.status(200).entity(output).build();
+    }
+
+    /**
+     * Calculate output bmi response.
+     *
+     * @author jlaabs
+     *
+     * @param weight weight in kg
+     * @param height height in meters
+     * @param format type of output
+     * @return BMI - Body Mass Index
+     */
+    public String makeBmiString(String format, double weight, double height, double bmi) {
+        DecimalFormat df = new DecimalFormat("###.##");
         if (format.equals("json")) {
             JSONObject json = new JSONObject();
             json.put("Height", height);
             json.put("Weight", weight);
             json.put("BMI", df.format(bmi));
-            return Response.status(200).entity(json.toString()).build();
+            return json.toString();
         } else {
             String html = "<h3>BMI (Metric)</h3><p>The BMI for a person with a height of " + height +
                     " meters and a weight of " + weight + " kilograms is : " + df.format(bmi) + "</p>";
-            return Response.status(200).entity(html).build();
+            return html;
         }
     }
+
 }
 
