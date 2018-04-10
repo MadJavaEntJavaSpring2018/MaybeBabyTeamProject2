@@ -24,9 +24,6 @@ AWS
 JUnit tests to achieve 80%+ code coverage
 * IDE: IntelliJ IDEA
 
-**Design**
-* Coming soon.
-* [Screen Design]
 
 * [Project Plan](ProjectPlan.md)
 
