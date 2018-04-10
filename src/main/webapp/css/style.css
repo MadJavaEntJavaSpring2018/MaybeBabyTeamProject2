@@ -1957,4 +1957,9 @@ form label {
   }
 }
 
+code {
+  font-size: 0.7em;
+  color: darkslategrey;
+}
+
 /*# sourceMappingURL=style.css.map */

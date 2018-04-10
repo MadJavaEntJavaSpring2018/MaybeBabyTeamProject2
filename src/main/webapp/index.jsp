@@ -82,7 +82,7 @@
                                                 <p>
                                                     Use this API to calculate BMR (Basal Metabolic Rate)  is an estimate of how many calories you'd burn if you were to do nothing but rest for 24 hours.
                                                     It represents the minimum amount of energy needed to keep your body functioning, including breathing and keeping your heart beating.
-                                                    Send a GET request to <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/bmr/weight/height/age/gender/activity</code>.
+                                                    Send a GET request to <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/bmr/weight/height/age/gender/activity</code>
                                                 </p>
                                                 <div>
                                                     <form action="fitness/service/bmr" method="post">
@@ -180,7 +180,7 @@
                                                     Use this API to calculate how much amount of Fat, Protein and Carbohydrates you needed per day to maintain weight / to lose 1 lb per week / to lose 2 lbs per week.
                                                     Send a GET request to <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/ccr/json/weight/height/age/gender/activity</code>
                                                     OR
-                                                    <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/ccr/html/weight/height/age/gender/activity</code>.
+                                                    <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/ccr/html/weight/height/age/gender/activity</code>
                                                 </p>
                                                 <div>
                                                     <form action="/calculateCalorieServlet" name="calform" method="post">
@@ -268,7 +268,7 @@
                                                     Use this API to calculate how many calories are burned during certain activities.
                                                     Send a GET request to <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/cac/json/met/duration/weight</code>
                                                     OR
-                                                    <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/cac/html/met/duration/weight</code>.
+                                                    <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/cac/html/met/duration/weight</code>
                                                 </p>
                                                 <div>
                                                     <form action="/calculateActivityCaloriesServlet" method="GET">
@@ -351,7 +351,7 @@
                                                 <h3>Calculate BMI (Imperial Units)</h3>
                                                 <p>
                                                     Use this API to calculate Body Mass Index (BMI) based on weight in pounds and height in inches.
-                                                    Send a GET request to <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/get/bmilbs</code>.
+                                                    Send a GET request to <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/get/bmilbs</code>
                                                 </p>
                                                 <div>
                                                     <form action="/MaybeBabyTeamProject/fitness/service/bmilbs" method="post">
@@ -411,7 +411,7 @@
                                                 <h3>Calculate BMI (Metric Units)</h3>
                                                 <p>
                                                     Use this API to calculate Body Mass Index (BMI) based on weight in kilograms and height in meters.
-                                                    Send a GET request to <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/get/bmikg</code>.
+                                                    Send a GET request to <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/get/bmikg</code>
                                                 </p>
                                                 <div>
                                                     <form action="/MaybeBabyTeamProject/fitness/service/bmikg" method="post">
