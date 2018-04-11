@@ -183,7 +183,7 @@
                                                     <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/ccr/html/weight/height/age/gender/activity</code>
                                                 </p>
                                                 <div>
-                                                    <form action="/calculateCalorieServlet" name="calform" method="post">
+                                                    <form action="calculateCalorieServlet" name="calform" method="post">
                                                         <div>
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">

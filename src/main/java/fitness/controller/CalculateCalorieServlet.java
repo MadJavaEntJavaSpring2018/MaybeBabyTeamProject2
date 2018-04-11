@@ -40,12 +40,12 @@ public class CalculateCalorieServlet extends HttpServlet {
         Client client = ClientBuilder.newClient();
         if (format.equals("json")) {
             WebTarget target =
-                    client.target("http://localhost:8080/fitness/service/ccr/json/" +
+                    client.target("http://localhost:8080/MaybeBabyTeamProject/fitness/service/ccr/json/" +
                             weight + "/" + height + "/" + age + "/" + gender + "/" + activity);
             output = target.request(MediaType.APPLICATION_JSON).get(String.class);
         } else if (format.equals("html")) {
             WebTarget target =
-                    client.target("http://localhost:8080/fitness/service/ccr/html/" +
+                    client.target("http://localhost:8080/MaybeBabyTeamProject/fitness/service/ccr/html/" +
                             weight + "/" + height + "/" + age + "/" + gender + "/" + activity);
             output = target.request(MediaType.TEXT_HTML).get(String.class);
         }
