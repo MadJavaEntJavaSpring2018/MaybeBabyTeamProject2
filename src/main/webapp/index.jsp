@@ -85,7 +85,7 @@
                                                     Send a GET request to <code>http://18.222.105.50:8080/MaybeBabyTeamProject/fitness/service/bmr</code>
                                                 </p>
                                                 <div>
-                                                    <form action="fitness/service/bmr" method="post">
+                                                    <form action="fitness/service/bmr" method="get">
                                                         <div>
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">
